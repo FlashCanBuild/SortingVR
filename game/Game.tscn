@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://56nsn1tybddf" path="res://Scenes/Right_Controller.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c2whimkrbpowo" path="res://Scenes/Movement_Vignette.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bg3htvolvwbc7" path="res://Scenes/Sphere_Target.tscn" id="5"]
-[ext_resource type="Script" uid="uid://cnaoc87vnuj66" path="res://GUI.gd" id="6"]
+[ext_resource type="Script" uid="uid://cnaoc87vnuj66" path="res://Scripts/GUI.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://cycuhqlotj5u1" path="res://Scenes/Pistol.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://btgyn0rhmwkx3" path="res://Scenes/Reset_Box.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://csfj6eadcl0pl" path="res://Scenes/Bomb.tscn" id="10"]

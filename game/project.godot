@@ -36,3 +36,8 @@ quality/shadow_atlas/size=2048
 quality/reflections/high_quality_ggx=false
 quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
+
+[xr]
+
+openxr/enabled=true
+shaders/enabled=true
