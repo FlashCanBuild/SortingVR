@@ -1,21 +1,20 @@
-extends MeshInstance
+extends MeshInstance3D
 
-# Makes a new material and makes the viewport (called GUI) texture
-# the texture for the MeshInstance.
+# Makes a new material and uses the SubViewport (called GUI) texture
+# as the texture for this MeshInstance3D.
 
-func _ready():
-	
-	# Get the viewport and wait two frames
-	var viewport = get_node("GUI")
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
-	
+func _ready() -> void:
+	# Get the SubViewport and wait two frames
+	var viewport: SubViewport = get_node("GUI")
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	# Get the texture
-	var gui_img = viewport.get_texture()
-	
-	# Make a new material and set the viewport texture as the texture, then set
-	# the material for this MeshInstance to the newly created material.
-	var material = SpatialMaterial.new()
-	material.flags_unshaded = true
+	var gui_img: ViewportTexture = viewport.get_texture()
+
+	# Make a new material, set the viewport texture as its albedo texture,
+	# then apply it to this mesh.
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.albedo_texture = gui_img
-	set_surface_material(0, material)
+	set_surface_override_material(0, material)
