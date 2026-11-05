@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/gun_silenced_sniper1_shot_01.ogg-1ca7ba8b243eb466b580295c7527c08f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cobyctlg6ta1k"
+path="res://.godot/imported/gun_silenced_sniper1_shot_01.ogg-1ca7ba8b243eb466b580295c7527c08f.oggvorbisstr"
 
 [deps]
 
 source_file="res://Audio/Gamemaster_audio_Silenced_Gun_Sounds/gun_silenced_sniper1_shot_01.ogg"
-dest_files=[ "res://.import/gun_silenced_sniper1_shot_01.ogg-1ca7ba8b243eb466b580295c7527c08f.oggstr" ]
+dest_files=["res://.godot/imported/gun_silenced_sniper1_shot_01.ogg-1ca7ba8b243eb466b580295c7527c08f.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
