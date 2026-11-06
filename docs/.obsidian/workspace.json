@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "633455d2538157bd",
+        "id": "42bd2cdb6959d730",
         "type": "tabs",
         "children": [
           {
-            "id": "71752a2f9744c024",
+            "id": "45419e4beec75e97",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -188,20 +188,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "71752a2f9744c024",
+  "active": "45419e4beec75e97",
   "lastOpenFiles": [
-    "images/Pasted image 20261106141225.png",
-    "images/Pasted image 20261106140239.png",
-    "images/Pasted image 20261106135719.png",
-    "images/Pasted image 20261106135653.png",
-    "images/Meta Horizon Link error message.png",
-    "README.md",
-    "devlogs/2026-11-06.md",
-    "images/EchoVR.png",
-    "des156/Research and Concept.md",
-    "images/Rough Sketch & Wireframe.jpeg",
-    "des156/Meaning for Society.md",
+    "images/2026-11-06/Client EXE.png",
+    "images/2026-11-06/USB 3 Connection.png",
+    "images/2026-11-06",
+    "images/2026-11-06/Meta Support.png",
+    "images/2026-11-06/NVIDIA Control Panel.png",
+    "images/2026-11-06/Unable to Use Link Feature.png",
     "des156/Schedule.md",
+    "des156/Meaning for Society.md",
+    "des156/Research and Concept.md",
+    "devlogs/2026-11-06.md",
+    "images/2026-11-06/Meta Horizon Link error message.png",
+    "README.md",
+    "images/2026-11-06/EchoVR.png",
+    "images/2026-11-06/Rough Sketch & Wireframe.jpeg",
     "des156/desktop.ini",
     "devlogs",
     "des156",

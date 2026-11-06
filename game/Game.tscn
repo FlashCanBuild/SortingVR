@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dcfuthybadqqf"]
 
+[ext_resource type="Script" uid="uid://c3wxsbwclhl7n" path="res://Scripts/Game.gd" id="1_gwjdr"]
 [ext_resource type="PackedScene" uid="uid://b7hrwc42wht82" path="res://Scenes/Left_Controller.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://56nsn1tybddf" path="res://Scenes/Right_Controller.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c2whimkrbpowo" path="res://Scenes/Movement_Vignette.tscn" id="4"]
@@ -79,6 +80,7 @@ points = PackedVector3Array(-0.199951, 0.199951, 0.199951, 0.199951, 0.199951, -
 size = Vector2(2, 1)
 
 [node name="Game" type="Node3D" unique_id=523960832]
+script = ExtResource("1_gwjdr")
 
 [node name="World" type="Node3D" parent="." unique_id=1454737562]
 
