@@ -7,7 +7,7 @@ toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
 [sub_resource type="OpenXRAction" id="OpenXRAction_vfhwq"]
 resource_name = "trigger_click"
-localized_name = "Trigger click"
+localized_name = "Teleport"
 action_type = 0
 toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
@@ -24,7 +24,7 @@ toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
 [sub_resource type="OpenXRAction" id="OpenXRAction_clvbf"]
 resource_name = "grip_click"
-localized_name = "Grip click"
+localized_name = "Grab"
 action_type = 0
 toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
@@ -35,7 +35,7 @@ toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
 [sub_resource type="OpenXRAction" id="OpenXRAction_3k6la"]
 resource_name = "primary"
-localized_name = "Primary joystick/thumbstick/trackpad"
+localized_name = "Move"
 action_type = 2
 toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
@@ -71,7 +71,7 @@ toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
 [sub_resource type="OpenXRAction" id="OpenXRAction_iphn4"]
 resource_name = "menu_button"
-localized_name = "Menu button"
+localized_name = "Mode switch"
 action_type = 0
 toplevel_paths = PackedStringArray("/user/hand/left", "/user/hand/right")
 
