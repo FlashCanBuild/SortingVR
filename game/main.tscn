@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://rn0g6jlhdhxq"]
 
 [ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/game.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -25,9 +27,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
+[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=927673984 instance=ExtResource("2_h2yge")]
+
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=446538727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=644979548 instance=ExtResource("3_1bvp3")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=806626067]
 environment = SubResource("Environment_lw7yt")
