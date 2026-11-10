@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b7hrwc42wht82"]
 
 [ext_resource type="PackedScene" uid="uid://bqbmdmlgsfaj1" path="res://Assets/Hand_Left.scn" id="1"]
+[ext_resource type="Script" uid="uid://bvv1u4f3wrtxp" path="res://Scripts/VR_Controller.gd" id="1_twksc"]
 [ext_resource type="Material" uid="uid://ctmdnld0d11tb" path="res://Assets/Assets_Material.tres" id="2"]
 [ext_resource type="AudioStream" uid="uid://ce0l4dnrfscl" path="res://Audio/Gamemaster_audio_Punch_and_Combat_Sounds/foley_object_grab_pickup_04.ogg" id="3"]
 
@@ -33,6 +34,7 @@ size = Vector3(0.01, 0.5, 0.01)
 
 [node name="Left_Controller" type="XRController3D" unique_id=161389775]
 tracker = &"left_hand"
+script = ExtResource("1_twksc")
 
 [node name="Hand" parent="." unique_id=1875378297 instance=ExtResource("1")]
 transform = Transform3D(-0.845723, 0.197862, 0.235802, 0, 0.68944, -0.578509, -0.307818, -0.543621, -0.647862, -0.00853791, 0, 0.0342013)

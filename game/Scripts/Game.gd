@@ -1,13 +1,16 @@
-## Game.gd handles the Godot-to-VR interaction, as well as other globals
-
 extends Node3D
 
-func _ready() -> void:
-	var xr_interface := XRServer.find_interface("OpenXR")
+var xr_interface: XRInterface
+
+func _ready():
+	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
-		print("OpenXR initialized")
-		# Ensure VSYNC is disabled - so computer monitor does not drag down FPS
+		print("OpenXR initialized successfully")
+
+		# Turn off v-sync!
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
 	else:
-		print("OpenXR not initialized, check headset and runtime")
+		print("OpenXR not initialized, please check if your headset is connected")

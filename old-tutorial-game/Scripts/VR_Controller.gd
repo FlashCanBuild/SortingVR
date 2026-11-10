@@ -66,9 +66,7 @@ const ACTION_MOVE := "primary"  # thumbstick / trackpad Vector2
 
 
 func _ready() -> void:
-	
-	# to add next time [11/7/2026]
-	# if THROWING_FRAMES <= 0:
+	assert(THROWING_FRAMES >= 1, "THROWING_FRAMES must be positive!") 
 		
 	# We need the teleport mesh to be separate from the controller, so moving 
 	# and rotating the controller does not affect the position and rotation of 
@@ -128,6 +126,7 @@ func _physics_process(delta: float) -> void:
 		move_input = Vector2.ZERO
 	else:
 		move_input = move_input.normalized() * ((move_input.length() - CONTROLLER_DEADZONE) / (1.0 - CONTROLLER_DEADZONE))
+	
 	var camera := get_parent().get_node("Player_Camera") as Node3D
 	var forward_direction := -camera.global_transform.basis.z.normalized()
 	var right_direction := camera.global_transform.basis.x.normalized()
@@ -142,11 +141,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		directional_movement = false
 
-
 func _on_button_pressed(button_name: String) -> void:
 	# Trigger
 	if button_name == ACTION_TELEPORT:
 		if held_object:
+			# [jag329] Hmm - maybe we could make interact() and picked_up() 
+			# part of an interface? Not sure if GDScript has those, though.
 			if held_object.has_method("interact"):
 				held_object.interact()
 		else:
@@ -158,6 +158,7 @@ func _on_button_pressed(button_name: String) -> void:
 		if teleport_button_down:
 			return
 		if not held_object:
+			# Grab the object, if it exists
 			var rigid_body: RigidBody3D = null
 			if grab_mode == "AREA":
 				for body in grab_area.get_overlapping_bodies():
@@ -171,6 +172,7 @@ func _on_button_pressed(button_name: String) -> void:
 					if collider is RigidBody3D and not "NO_PICKUP" in collider:
 						rigid_body = collider
 			if rigid_body:
+				# We found an object - hold it!
 				held_object = rigid_body
 				held_object_data["freeze"] = held_object.freeze
 				held_object_data["freeze_mode"] = held_object.freeze_mode
@@ -188,10 +190,12 @@ func _on_button_pressed(button_name: String) -> void:
 					held_object.controller = self
 
 		else:
+			# We are currently holding an object and we wish to release it
 			held_object.freeze = held_object_data["freeze"]
 			held_object.freeze_mode = held_object_data["freeze_mode"]
 			held_object.collision_layer = held_object_data["layer"]
 			held_object.collision_mask = held_object_data["mask"]
+			# Throw it!
 			held_object.apply_impulse(controller_velocity)
 			if held_object.has_method("dropped"):
 				held_object.dropped()
@@ -219,6 +223,7 @@ func _on_button_released(button_name: String) -> void:
 	if button_name == ACTION_TELEPORT:
 		if teleport_button_down:
 			if teleport_pos != null and teleport_mesh.visible:
+				# perform the teleportation
 				var parent := get_parent() as Node3D
 				var camera := parent.get_node("Player_Camera") as Node3D
 				var camera_offset := camera.global_transform.origin - parent.global_transform.origin
@@ -230,11 +235,15 @@ func _on_button_released(button_name: String) -> void:
 			teleport_raycast.visible = false
 			teleport_pos = null
 
+# What is the "sleep area"?
+# The sleep area is an Area3D that surrounds the controller that defines which 
+# Rigidbody3D instances' physics processes are run every frame. If outside the 
+# area, their physics will not run, and will not be grabbable or able to be 
+# interacted with.
 func _on_sleep_area_entered(body: Node3D) -> void:
 	if "can_sleep" in body:
 		body.can_sleep = false
 		body.sleeping = false
-
 
 func _on_sleep_area_exited(body: Node3D) -> void:
 	if "can_sleep" in body:

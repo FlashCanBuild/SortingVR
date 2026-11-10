@@ -10,34 +10,28 @@ config_version=5
 
 [application]
 
-config/name="VR Starter Tutorial"
-run/main_scene="res://Game.tscn"
-config/features=PackedStringArray("4.7")
-run/low_processor_mode=true
-config/icon="res://icon.png"
+config/name="SortingVR"
+run/main_scene="uid://rn0g6jlhdhxq"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="2d"
-
-[gdnative]
-
-singletons=["res://addons/godot-openvr/godot_openvr.gdnlib"]
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 
-common/physics_fps=90
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
-quality/filters/anisotropic_filter_level=1
-quality/directional_shadow/size=2048
-quality/shadow_atlas/size=2048
-quality/reflections/high_quality_ggx=false
-quality/filters/msaa=1
-environment/default_environment="res://default_env.tres"
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_3d=2
 
 [xr]
 
 openxr/enabled=true
+openxr/default_action_map="res://assets/openxr_action_map.tres"
 shaders/enabled=true

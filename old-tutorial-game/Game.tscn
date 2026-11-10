@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://56nsn1tybddf" path="res://Scenes/Right_Controller.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c2whimkrbpowo" path="res://Scenes/Movement_Vignette.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bg3htvolvwbc7" path="res://Scenes/Sphere_Target.tscn" id="5"]
+[ext_resource type="Script" uid="uid://bp6ny111wsqwu" path="res://Scripts/Movement_Vignette.gd" id="5_lvtmh"]
 [ext_resource type="Script" uid="uid://cnaoc87vnuj66" path="res://Scripts/GUI.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://cycuhqlotj5u1" path="res://Scenes/Pistol.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://btgyn0rhmwkx3" path="res://Scenes/Reset_Box.tscn" id="9"]
@@ -408,6 +409,7 @@ far = 100.0
 
 [node name="Movement_Vignette" parent="ARVROrigin" unique_id=630000156 instance=ExtResource("4")]
 visible = false
+script = ExtResource("5_lvtmh")
 
 [node name="Spheres" type="Node3D" parent="." unique_id=510959156]
 
