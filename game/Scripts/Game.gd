@@ -1,3 +1,5 @@
+# game.gd sets up the XR interface.
+
 extends Node3D
 
 var xr_interface: XRInterface

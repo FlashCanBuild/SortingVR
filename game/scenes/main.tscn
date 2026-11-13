@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rn0g6jlhdhxq"]
 
-[ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/game.gd" id="1_ya4ey"]
+[ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/Game.gd" id="1_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_eb6dy"]
 [ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_trceg"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_a8y0u"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_0ld40"]
 [ext_resource type="Texture2D" uid="uid://d0s686o5cg2ij" path="res://assets/UE4_1m x 1m.png" id="10_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bbtt1wtum8a26" path="res://scenes/test_ball.tscn" id="11_yc10j"]
+[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="12_eb6dy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -87,3 +88,6 @@ shape = SubResource("BoxShape3D_po5s0")
 
 [node name="XRToolsPickable" parent="." unique_id=1719679024 instance=ExtResource("11_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14920807, 0.5, 1.3147738)
+
+[node name="Node" type="Node" parent="." unique_id=1344065890]
+script = ExtResource("12_eb6dy")
