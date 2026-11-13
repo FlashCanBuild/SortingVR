@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://rn0g6jlhdhxq"]
 
-[ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/Game.gd" id="1_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_eb6dy"]
-[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_trceg"]
-[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_muem4"]
-[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_0ld40"]
-[ext_resource type="Texture2D" uid="uid://d0s686o5cg2ij" path="res://assets/UE4_1m x 1m.png" id="10_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://bbtt1wtum8a26" path="res://scenes/test_ball.tscn" id="11_yc10j"]
-[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="12_eb6dy"]
+[ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/Game.gd" id="1_qmy6f"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_mwfav"]
+[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_3p2gp"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_cvmbd"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_ft6cd"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_bb450"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_nfivy"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_1nqs0"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_1iba3"]
+[ext_resource type="Texture2D" uid="uid://d0s686o5cg2ij" path="res://assets/UE4_1m x 1m.png" id="10_yxlcp"]
+[ext_resource type="PackedScene" uid="uid://bbtt1wtum8a26" path="res://scenes/TestBall.tscn" id="11_ebg2g"]
+[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="12_2ofn6"]
+[ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -25,7 +26,7 @@ ambient_light_source = 3
 reflected_light_source = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
-albedo_texture = ExtResource("10_gqmmt")
+albedo_texture = ExtResource("10_yxlcp")
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_po5s0"]
@@ -35,7 +36,7 @@ size = Vector2(9, 9)
 size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D" unique_id=227518903]
-script = ExtResource("1_ya4ey")
+script = ExtResource("1_qmy6f")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=779980802]
 
@@ -46,31 +47,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=927673984 instance=ExtResource("2_eb6dy")]
-hand_material_override = ExtResource("3_trceg")
+[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=927673984 instance=ExtResource("2_mwfav")]
+hand_material_override = ExtResource("3_3p2gp")
 
-[node name="MovementDirect" parent="XROrigin3D/LeftHand" unique_id=1671797340 instance=ExtResource("4_a8y0u")]
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" unique_id=1671797340 instance=ExtResource("4_cvmbd")]
 strafe = true
 
-[node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1802764684 instance=ExtResource("5_jkv2x")]
+[node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1802764684 instance=ExtResource("5_ft6cd")]
 ranged_enable = false
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=446538727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 
-[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=644979548 instance=ExtResource("6_jbj1t")]
-hand_material_override = ExtResource("3_trceg")
+[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=644979548 instance=ExtResource("6_bb450")]
+hand_material_override = ExtResource("3_3p2gp")
 
-[node name="MovementTurn" parent="XROrigin3D/RightHand" unique_id=637026269 instance=ExtResource("7_muem4")]
+[node name="MovementTurn" parent="XROrigin3D/RightHand" unique_id=637026269 instance=ExtResource("7_nfivy")]
 
-[node name="FunctionPickup" parent="XROrigin3D/RightHand" unique_id=440373928 instance=ExtResource("5_jkv2x")]
+[node name="FunctionPickup" parent="XROrigin3D/RightHand" unique_id=440373928 instance=ExtResource("5_ft6cd")]
 ranged_enable = false
 
-[node name="MovementJump" parent="XROrigin3D/RightHand" unique_id=1986962914 instance=ExtResource("8_dp3eg")]
+[node name="MovementJump" parent="XROrigin3D/RightHand" unique_id=1986962914 instance=ExtResource("8_1nqs0")]
 jump_button_action = "ax_button"
 
-[node name="PlayerBody" parent="XROrigin3D" unique_id=827412725 instance=ExtResource("9_0ld40")]
+[node name="PlayerBody" parent="XROrigin3D" unique_id=827412725 instance=ExtResource("9_1iba3")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=806626067]
 environment = SubResource("Environment_lw7yt")
@@ -86,8 +87,11 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="XRToolsPickable" parent="." unique_id=1719679024 instance=ExtResource("11_yc10j")]
+[node name="XRToolsPickable" parent="." unique_id=1719679024 instance=ExtResource("11_ebg2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14920807, 0.5, 1.3147738)
 
-[node name="Node" type="Node" parent="." unique_id=1344065890]
-script = ExtResource("12_eb6dy")
+[node name="SmokeTest" type="Node" parent="." unique_id=1344065890]
+script = ExtResource("12_2ofn6")
+
+[node name="BlockRow" parent="." unique_id=1777947557 instance=ExtResource("13_xa025")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

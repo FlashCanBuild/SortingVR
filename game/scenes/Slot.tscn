@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bocmrh145jrsa"]
+
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_djgyf"]
+[ext_resource type="Script" uid="uid://dptowd1f3tffm" path="res://scripts/Slot.gd" id="1_mlwvr"]
+
+[node name="Slot" type="Node3D" unique_id=1728868693]
+script = ExtResource("1_mlwvr")
+
+[node name="SnapZone" parent="." unique_id=1665578492 instance=ExtResource("1_djgyf")]
+snap_require = "SortBlock"
+
+[node name="PadMesh" type="MeshInstance3D" parent="." unique_id=405688454]

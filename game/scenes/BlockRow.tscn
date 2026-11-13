@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://calmpm8nssn3p"]
+
+[ext_resource type="Script" uid="uid://nhpadiotllvp" path="res://scripts/BlockRow.gd" id="1_sdlgj"]
+[ext_resource type="PackedScene" uid="uid://bocmrh145jrsa" path="res://scenes/Slot.tscn" id="2_0obv0"]
+[ext_resource type="PackedScene" uid="uid://bwis1ourdwnih" path="res://scenes/SortBlock.tscn" id="3_smu0a"]
+
+[node name="BlockRow" type="Node3D" unique_id=1777947557 node_paths=PackedStringArray("temp_slot")]
+script = ExtResource("1_sdlgj")
+slot_scene = ExtResource("2_0obv0")
+block_scene = ExtResource("3_smu0a")
+temp_slot = NodePath("")
+max_block_height = 5.0
+
+[node name="Slot" parent="." unique_id=1728868693 instance=ExtResource("2_0obv0")]
