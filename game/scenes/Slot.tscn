@@ -3,10 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_djgyf"]
 [ext_resource type="Script" uid="uid://dptowd1f3tffm" path="res://scripts/Slot.gd" id="1_mlwvr"]
 
-[node name="Slot" type="Node3D" unique_id=1728868693]
+[sub_resource type="BoxMesh" id="BoxMesh_2l3ww"]
+size = Vector3(0.26, -0.005, 0.26)
+
+[node name="Slot" type="Node3D" unique_id=1728868693 node_paths=PackedStringArray("snap_zone", "pad_mesh")]
 script = ExtResource("1_mlwvr")
+snap_zone = NodePath("SnapZone")
+pad_mesh = NodePath("PadMesh")
 
 [node name="SnapZone" parent="." unique_id=1665578492 instance=ExtResource("1_djgyf")]
 snap_require = "SortBlock"
 
 [node name="PadMesh" type="MeshInstance3D" parent="." unique_id=405688454]
+mesh = SubResource("BoxMesh_2l3ww")

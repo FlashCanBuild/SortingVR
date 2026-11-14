@@ -6,37 +6,55 @@
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_amcgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l3ww"]
-size = Vector3(0.3, 1.5, 0.3)
+size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amcgd"]
 albedo_color = Color(0.95, 0.18999998, 0.8790667, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r7uc3"]
 material = SubResource("StandardMaterial3D_amcgd")
-size = Vector3(0.3, 1.5, 0.3)
+size = Vector3(0.2, 0.2, 0.2)
 
-[node name="SortBlock" unique_id=654789477 node_paths=PackedStringArray("mesh_instance", "collision_shape", "left_grab_point", "right_grab_point") instance=ExtResource("1_tnhqg")]
+[node name="SortBlock" unique_id=654789477 node_paths=PackedStringArray("mesh_instance", "collision_shape", "left_grab_point", "right_grab_point", "labels") instance=ExtResource("1_tnhqg")]
 script = ExtResource("2_amcgd")
-mesh_instance = NodePath("MeshInstance3D")
+mesh_instance = NodePath("Mesh")
 collision_shape = NodePath("CollisionShape3D")
 left_grab_point = NodePath("GrabPointHandLeft")
 right_grab_point = NodePath("GrabPointHandRight")
-preview_value = 5
-preview_count = 10
-preview_max_height = 3.0
+labels = [NodePath("LabelRight"), NodePath("LabelLeft"), NodePath("LabelBack"), NodePath("LabelFront")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_2l3ww")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=155598348]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+[node name="Mesh" type="MeshInstance3D" parent="." index="1" unique_id=155598348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("BoxMesh_r7uc3")
 
 [node name="GrabPointHandRight" parent="." index="2" unique_id=7514196 instance=ExtResource("2_2l3ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.14, -0.11)
 visible = true
 
 [node name="GrabPointHandLeft" parent="." index="3" unique_id=2093744054 instance=ExtResource("3_amcgd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.14, -0.11)
 visible = true
+
+[node name="LabelRight" type="Label3D" parent="." index="8" unique_id=1297394179]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.102, 0.1, 0)
+pixel_size = 0.004
+text = "1"
+
+[node name="LabelLeft" type="Label3D" parent="." index="9" unique_id=380594458]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.102, 0.1, 0)
+pixel_size = 0.004
+text = "1"
+
+[node name="LabelBack" type="Label3D" parent="." index="10" unique_id=528569957]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.102)
+pixel_size = 0.004
+text = "1"
+
+[node name="LabelFront" type="Label3D" parent="." index="11" unique_id=1641124727]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0.1, 0.102)
+pixel_size = 0.004
+text = "1"

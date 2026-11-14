@@ -2,13 +2,32 @@
 
 [ext_resource type="Script" uid="uid://nhpadiotllvp" path="res://scripts/BlockRow.gd" id="1_sdlgj"]
 [ext_resource type="PackedScene" uid="uid://bocmrh145jrsa" path="res://scenes/Slot.tscn" id="2_0obv0"]
-[ext_resource type="PackedScene" uid="uid://bwis1ourdwnih" path="res://scenes/SortBlock.tscn" id="3_smu0a"]
+[ext_resource type="PackedScene" uid="uid://bwis1ourdwnih" path="res://scenes/SortBlock.tscn" id="2_uvjos"]
 
-[node name="BlockRow" type="Node3D" unique_id=1777947557 node_paths=PackedStringArray("temp_slot")]
+[node name="BlockRow" type="Node3D" unique_id=1777947557 node_paths=PackedStringArray("slots", "temp_slot")]
 script = ExtResource("1_sdlgj")
-slot_scene = ExtResource("2_0obv0")
-block_scene = ExtResource("3_smu0a")
-temp_slot = NodePath("")
+slots = [NodePath("Slot0"), NodePath("Slot1"), NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot4")]
+temp_slot = NodePath("TempSlot")
+block_scene = ExtResource("2_uvjos")
 max_block_height = 5.0
 
-[node name="Slot" parent="." unique_id=1728868693 instance=ExtResource("2_0obv0")]
+[node name="TempSlot" parent="." unique_id=1728868693 instance=ExtResource("2_0obv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Slot0" parent="." unique_id=255949924 instance=ExtResource("2_0obv0")]
+
+[node name="Slot1" parent="." unique_id=1807986929 instance=ExtResource("2_0obv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+index = 1
+
+[node name="Slot2" parent="." unique_id=810512703 instance=ExtResource("2_0obv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+index = 2
+
+[node name="Slot3" parent="." unique_id=572254808 instance=ExtResource("2_0obv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+index = 3
+
+[node name="Slot4" parent="." unique_id=333287905 instance=ExtResource("2_0obv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+index = 4

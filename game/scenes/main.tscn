@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bbtt1wtum8a26" path="res://scenes/TestBall.tscn" id="11_ebg2g"]
 [ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="12_2ofn6"]
 [ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
+[ext_resource type="PackedScene" uid="uid://bwis1ourdwnih" path="res://scenes/SortBlock.tscn" id="14_3p2gp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -94,4 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14920807, 0.5, 1.3147738)
 script = ExtResource("12_2ofn6")
 
 [node name="BlockRow" parent="." unique_id=1777947557 instance=ExtResource("13_xa025")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999998, -1.6)
+
+[node name="SortBlock" parent="." unique_id=654789477 instance=ExtResource("14_3p2gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
