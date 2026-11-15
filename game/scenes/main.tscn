@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_nfivy"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_1iba3"]
-[ext_resource type="Texture2D" uid="uid://d0s686o5cg2ij" path="res://assets/UE4_1m x 1m.png" id="10_yxlcp"]
-[ext_resource type="PackedScene" uid="uid://bbtt1wtum8a26" path="res://scenes/TestBall.tscn" id="11_ebg2g"]
-[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="12_2ofn6"]
+[ext_resource type="Texture2D" uid="uid://d0s686o5cg2ij" path="res://assets/textures/UE4_1m x 1m.png" id="10_yxlcp"]
+[ext_resource type="Script" uid="uid://bf3alvab6gt5i" path="res://scripts/SortingBoard.gd" id="11_qmy6f"]
+[ext_resource type="Script" uid="uid://cfudkq7l1sfws" path="res://scripts/logic/Referee.gd" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
-[ext_resource type="PackedScene" uid="uid://bwis1ourdwnih" path="res://scenes/SortBlock.tscn" id="14_3p2gp"]
+[ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/PseudocodeBoard.tscn" id="14_mwfav"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -88,14 +88,18 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="XRToolsPickable" parent="." unique_id=1719679024 instance=ExtResource("11_ebg2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14920807, 0.5, 1.3147738)
+[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.0999999, 0, -2.5500002)
+script = ExtResource("11_qmy6f")
+referee = NodePath("Referee")
+block_row = NodePath("BlockRow")
+pseudocode_board = NodePath("PseudocodeBoard")
 
-[node name="SmokeTest" type="Node" parent="." unique_id=1344065890]
-script = ExtResource("12_2ofn6")
+[node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
+max_block_height = 2.5
 
-[node name="BlockRow" parent="." unique_id=1777947557 instance=ExtResource("13_xa025")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999998, -1.6)
+[node name="Referee" type="Node" parent="SortingBoard" unique_id=146909041]
+script = ExtResource("13_mwfav")
 
-[node name="SortBlock" parent="." unique_id=654789477 instance=ExtResource("14_3p2gp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+[node name="PseudocodeBoard" parent="SortingBoard" unique_id=1050903606 instance=ExtResource("14_mwfav")]
+transform = Transform3D(-0.64278764, -0.19826688, -0.73994195, 0, 0.9659258, -0.25881904, 0.7660443, -0.1663657, -0.6208852, 3.8758352, 2.5, -2.3988824)

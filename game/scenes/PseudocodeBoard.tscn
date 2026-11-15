@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b5l050stkv4v2"]
+
+[ext_resource type="Script" uid="uid://cp3x2fsc2ohni" path="res://scripts/PseudocodeBoard.gd" id="1_s4lqp"]
+[ext_resource type="FontFile" uid="uid://b4sffrp8vc8qc" path="res://assets/fonts/CONSOLA.TTF" id="2_ihax8"]
+
+[node name="PseudocodeBoard" type="Node3D" unique_id=1050903606 node_paths=PackedStringArray("code_label", "marker_label", "current_label")]
+script = ExtResource("1_s4lqp")
+code_label = NodePath("CodeLabel")
+marker_label = NodePath("MarkerLabel")
+current_label = NodePath("CurrentLabel")
+
+[node name="CodeLabel" type="Label3D" parent="." unique_id=252320719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15000002, -2.4214387e-08, 0)
+text = "	\"for i = 0 to n - 2\",
+	\"    int minIndex = i\",
+	\"    for j = i + 1 to n - 1\",
+	\"        if arr[j] < arr[minIndex]\",
+	\"            minIndex = j\",
+	\"    if minIndex != i\",
+	\"        int temp = arr[i]\",
+	\"        arr[i] = arr[minIndex]\",
+	\"        arr[minIndex] = temp\","
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CurrentLabel" type="Label3D" parent="." unique_id=1380114742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.2, 0.002)
+modulate = Color(1, 1, 0, 1)
+text = "CURRENT"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="MarkerLabel" type="Label3D" parent="." unique_id=961629662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000002, -2.4214387e-08, 0)
+text = "
+>"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 2
+vertical_alignment = 0

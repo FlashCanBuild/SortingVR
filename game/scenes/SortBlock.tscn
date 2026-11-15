@@ -15,7 +15,7 @@ albedo_color = Color(0.95, 0.18999998, 0.8790667, 1)
 material = SubResource("StandardMaterial3D_amcgd")
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="SortBlock" unique_id=654789477 node_paths=PackedStringArray("mesh_instance", "collision_shape", "left_grab_point", "right_grab_point", "labels") instance=ExtResource("1_tnhqg")]
+[node name="SortBlock" unique_id=654789477 node_paths=PackedStringArray("mesh_instance", "collision_shape", "left_grab_point", "right_grab_point", "labels") groups=["SortBlock"] instance=ExtResource("1_tnhqg")]
 script = ExtResource("2_amcgd")
 mesh_instance = NodePath("Mesh")
 collision_shape = NodePath("CollisionShape3D")
@@ -39,22 +39,22 @@ visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.14, -0.11)
 visible = true
 
-[node name="LabelRight" type="Label3D" parent="." index="8" unique_id=1297394179]
+[node name="LabelRight" type="Label3D" parent="." index="4" unique_id=1297394179]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.102, 0.1, 0)
 pixel_size = 0.004
 text = "1"
 
-[node name="LabelLeft" type="Label3D" parent="." index="9" unique_id=380594458]
+[node name="LabelLeft" type="Label3D" parent="." index="5" unique_id=380594458]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.102, 0.1, 0)
 pixel_size = 0.004
 text = "1"
 
-[node name="LabelBack" type="Label3D" parent="." index="10" unique_id=528569957]
+[node name="LabelBack" type="Label3D" parent="." index="6" unique_id=528569957]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.102)
 pixel_size = 0.004
 text = "1"
 
-[node name="LabelFront" type="Label3D" parent="." index="11" unique_id=1641124727]
+[node name="LabelFront" type="Label3D" parent="." index="7" unique_id=1641124727]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0.1, 0.102)
 pixel_size = 0.004
 text = "1"

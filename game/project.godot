@@ -25,6 +25,10 @@ XRToolsRumbleManager="*uid://by853dk86g1qw"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/flash/OneDrive/Documents/Game Development/SortingVR/game/recordings/recording.ogv"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
