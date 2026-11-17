@@ -1,11 +1,10 @@
 ## Referee is an abstraction that runs through the sorting algorithm with the 
 ## player. It ensures their correctness and simultaneously communicates with the
 ## slots, blocks, and control panels via signals.
-
 class_name Referee
 extends Node
 
-## Send out a signal with the step we're currently waiting for, and an optional 
+## Send out a signal with the [Step] we're currently waiting for, and an optional 
 ## amount of automatic "narrated" steps that we wish the board to automatically 
 ## complete.
 signal step_advanced(waiting_for: Step, narrated: Array)
@@ -23,7 +22,7 @@ signal finished(narrated: Array)
 ## Maximum mistakes the player can make before we restart the algorithm
 const MAX_MISTAKES := 3
 
-## Private variables (designated by _) by convention
+# Private variables (designated by _) by convention
 ## The sorting algorithm that the referee checks against
 var _algorithm: SortAlgorithm
 ## The initial values of the array
@@ -45,13 +44,13 @@ var _progress: int = 0
 ## Total number of player-made steps
 var _total: int = 0
 
-## PUBLIC METHODS
+# PUBLIC METHODS
 
-## Start the algorithm with a certain amount of values.
-## @param algorithm 	the algorithm to start 
-## @param values		the values of the array to use
-## @param auto_move		whether or not the referee should auto-set 
-## 						loop-controlled variables
+## Start the algorithm with a certain amount of values.[br]
+## @param algorithm 	the algorithm to start[br]
+## @param values		the values of the array to use[br]
+## @param auto_move		whether or not the referee should auto-set[br]
+## 						loop-controlled variables[br]
 func start(algorithm: SortAlgorithm, values: Array, auto_move: bool = true) -> void:
 	_algorithm = algorithm
 	_initial_values = values.duplicate()
@@ -66,19 +65,19 @@ func restart() -> void:
 	restarted.emit()
 	_begin()
 
-## Submit a given PlayerAction, and whether it is correct or not.
-## @param action	the player's action
+## Submit a given PlayerAction, and whether it is correct or not.[br]
+## @param action	the player's action[br]
 ## @returns 		whether or not the player's action was correct or not
 func submit(action: PlayerAction) -> bool:
 	if _index >= _steps.size():
 		return false
 	var step := _steps[_index]
-	## Check if the step is satisfied by the player's action (i.e. the player's 
-	## action is correct)
+	# Check if the step is satisfied by the player's action (i.e. the player's 
+	# action is correct)
 	if step.is_satisfied_by(action):
 		_on_correct(step)
 		return true
-	## Otherwise, emit a mistake
+	# Otherwise, emit a mistake
 	_mistakes += 1
 	mistake_made.emit(_mistakes, step)
 	_emit_stats()
@@ -86,8 +85,7 @@ func submit(action: PlayerAction) -> bool:
 		restart()
 	return false
 	
-## PRIVATE METHODS
-
+# PRIVATE METHODS
 ## Begin the algorithm from the beginning
 func _begin() -> void:
 	_steps = _algorithm.build(_initial_values)
@@ -102,7 +100,7 @@ func _begin() -> void:
 			_total += 1
 	_advance()
 
-## Upon a correct step, advance to the next step
+## Upon a correct step, advance to the next step[br]
 ## @param step	The correct step that was made by the player
 func _on_correct(step: Step) -> void:
 	_progress += 1
@@ -124,8 +122,8 @@ func _advance() -> void:
 		return
 	step_advanced.emit(_steps[_index], narrated)
 
-## Whether or not a step requires the player to complete it
-## @param step	step to check
+## Whether or not a step requires the player to complete it[br]
+## @param step	step to check[br]
 ## @returns 	whether or not the step requires the player
 func _needs_player(step: Step) -> bool:
 	var set_step := step as SetStep
@@ -138,6 +136,6 @@ func _needs_player(step: Step) -> bool:
 		return not _auto_move
 	return true
 
-## Emit the Referee's statistics to the stats_changed signal
+## Emit the Referee's statistics to the [signal stats_changed] signal[br]
 func _emit_stats() -> void:
 	stats_changed.emit(_progress, _total, _comparisons, _mistakes)

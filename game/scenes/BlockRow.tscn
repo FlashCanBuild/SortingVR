@@ -12,7 +12,7 @@ block_scene = ExtResource("2_uvjos")
 max_block_height = 5.0
 
 [node name="TempSlot" parent="." unique_id=1728868693 instance=ExtResource("2_0obv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
 
 [node name="Slot0" parent="." unique_id=255949924 instance=ExtResource("2_0obv0")]
 

@@ -1,9 +1,9 @@
 ## Selection Sort is an O(n^2) sorting algorithm that finds the minimum of 
 ## subarrays.
-
 class_name SelectionSort
 extends SortAlgorithm
 
+## Pseudocode for the algorithm
 const PSEUDOCODE: Array[String] = [
 	"for i = 0 to n - 2",
 	"    int minIndex = i",
@@ -16,12 +16,18 @@ const PSEUDOCODE: Array[String] = [
 	"        arr[minIndex] = temp",
 ]
 
+## Name of the algorithm[br]
+## @returns "Selection Sort"
 func algorithm_name() -> String:
 	return "Selection Sort"
 
+## Getter for [member PSEUDOCODE][br]
+## @returns PSEUDOCODE
 func get_pseudocode() -> Array[String]:
 	return PSEUDOCODE
 
+## Getter for this algorithm's index variables[br]
+## @returns array of [Variable]s
 func get_variables() -> Array[Variable]:
 	var variables: Array[Variable] = [
 		Variable.new(&"i", true),
@@ -30,6 +36,9 @@ func get_variables() -> Array[Variable]:
 	]
 	return variables
 
+## Builds the array of steps needed to complete the algorithm.[br]
+## @param values 	[Array] of integers that needs to be sorted[br]
+## @returns 		[Array] of [Step]s to complete the algorithm
 func build(values: Array) -> Array[Step]:
 	var a := values.duplicate()
 	var steps: Array[Step] = []

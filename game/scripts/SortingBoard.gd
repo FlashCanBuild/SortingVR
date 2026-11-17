@@ -1,9 +1,13 @@
+## SortingBoard is a container / manager class to support the entire sorting 
+## process.
 class_name SortingBoard
 extends Node3D
 
 @export var referee: Referee
 @export var block_row: BlockRow
 @export var pseudocode_board: PseudocodeBoard
+@export var true_button: CompareButton
+@export var false_button: CompareButton
 
 @export var auto_move_loop_variables: bool = true
 @export var start_on_ready: bool = true
@@ -30,6 +34,9 @@ func _ready() -> void:
 	referee.stats_changed.connect(_on_stats_changed)
 	referee.restarted.connect(_on_restarted)
 	referee.finished.connect(_on_finished)
+	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed(true))
+	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed(false))
+	
 	if start_on_ready:
 		randomize_run(array_size)
 
@@ -81,6 +88,9 @@ func _return_block(block: SortBlock, wrong_slot: Slot, home: Slot, generation: i
 	if home.is_empty():
 		home.place(block)
 	_busy = false
+	
+func _on_button_pressed(type: bool):
+	referee.submit(CompareAction.new(type))
 
 func _on_block_dropped(block: Node3D) -> void:
 	var generation := _generation
@@ -120,7 +130,7 @@ func _autoplay(step: Step, generation: int) -> void:
 func _correct_action(step: Step) -> PlayerAction:
 	var compare_step := step as CompareStep
 	if compare_step != null:
-		return AnswerAction.new(compare_step.expected)
+		return CompareAction.new(compare_step.expected)
 	var move_step := step as MoveStep
 	if move_step != null:
 		return MoveAction.new(move_step.from_slot, move_step.to_slot)

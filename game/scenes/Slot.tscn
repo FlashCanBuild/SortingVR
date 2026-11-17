@@ -3,17 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_djgyf"]
 [ext_resource type="Script" uid="uid://dptowd1f3tffm" path="res://scripts/Slot.gd" id="1_mlwvr"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mlwvr"]
+resource_local_to_scene = true
+radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_po5s0"]
+size = Vector3(0.25, 0.25, 0.25)
+
 [sub_resource type="BoxMesh" id="BoxMesh_2l3ww"]
 size = Vector3(0.26, 0.005, 0.26)
 
-[node name="Slot" type="Node3D" unique_id=1728868693 node_paths=PackedStringArray("snap_zone", "pad_mesh")]
+[node name="Slot" type="Node3D" unique_id=1728868693 node_paths=PackedStringArray("snap_zone", "pad_mesh", "zone_box")]
 script = ExtResource("1_mlwvr")
 snap_zone = NodePath("SnapZone")
 pad_mesh = NodePath("PadMesh")
+zone_box = NodePath("SnapZone/ZoneBox")
 
 [node name="SnapZone" parent="." unique_id=1665578492 instance=ExtResource("1_djgyf")]
-snap_mode = 1
 snap_require = "SortBlock"
+
+[node name="CollisionShape3D" parent="SnapZone" index="0"]
+shape = SubResource("SphereShape3D_mlwvr")
+
+[node name="ZoneBox" type="CollisionShape3D" parent="SnapZone" unique_id=2071243610]
+shape = SubResource("BoxShape3D_po5s0")
 
 [node name="PadMesh" type="MeshInstance3D" parent="." unique_id=405688454]
 mesh = SubResource("BoxMesh_2l3ww")
+
+[editable path="SnapZone"]

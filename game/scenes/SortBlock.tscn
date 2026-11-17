@@ -33,11 +33,9 @@ mesh = SubResource("BoxMesh_r7uc3")
 
 [node name="GrabPointHandRight" parent="." index="2" unique_id=7514196 instance=ExtResource("2_2l3ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.14, -0.11)
-visible = true
 
 [node name="GrabPointHandLeft" parent="." index="3" unique_id=2093744054 instance=ExtResource("3_amcgd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.14, -0.11)
-visible = true
 
 [node name="LabelRight" type="Label3D" parent="." index="4" unique_id=1297394179]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.102, 0.1, 0)

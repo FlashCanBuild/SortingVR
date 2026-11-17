@@ -1,7 +1,7 @@
-# game.gd sets up the XR interface.
-
+## Sets up the XR interface.
 extends Node3D
 
+## The [XRInterface] for the game
 var xr_interface: XRInterface
 
 func _ready():

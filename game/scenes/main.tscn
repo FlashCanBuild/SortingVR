@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cfudkq7l1sfws" path="res://scripts/logic/Referee.gd" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
 [ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/PseudocodeBoard.tscn" id="14_mwfav"]
+[ext_resource type="PackedScene" uid="uid://cfjj037dxmxgp" path="res://scenes/CompareButton.tscn" id="15_3p2gp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -73,6 +74,7 @@ ranged_enable = false
 jump_button_action = "ax_button"
 
 [node name="PlayerBody" parent="XROrigin3D" unique_id=827412725 instance=ExtResource("9_1iba3")]
+push_rigid_bodies = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=806626067]
 environment = SubResource("Environment_lw7yt")
@@ -88,12 +90,13 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board")]
+[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board", "true_button")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.0999999, 0, -2.5500002)
 script = ExtResource("11_qmy6f")
 referee = NodePath("Referee")
 block_row = NodePath("BlockRow")
 pseudocode_board = NodePath("PseudocodeBoard")
+true_button = NodePath("TrueButton")
 
 [node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
 max_block_height = 2.5
@@ -102,4 +105,10 @@ max_block_height = 2.5
 script = ExtResource("13_mwfav")
 
 [node name="PseudocodeBoard" parent="SortingBoard" unique_id=1050903606 instance=ExtResource("14_mwfav")]
-transform = Transform3D(-0.64278764, -0.19826688, -0.73994195, 0, 0.9659258, -0.25881904, 0.7660443, -0.1663657, -0.6208852, 3.8758352, 2.5, -2.3988824)
+transform = Transform3D(-0.64278764, -0.32374436, -0.69427186, -7.450581e-09, 0.9063077, -0.42261824, 0.7660443, -0.27165383, -0.5825634, 1.5850257, 2.5555716, -0.698595)
+
+[node name="TrueButton" parent="SortingBoard" unique_id=1994112145 instance=ExtResource("15_3p2gp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5000002, 0.016, -0.92499983)
+
+[node name="TrueButton2" parent="SortingBoard" unique_id=787987813 instance=ExtResource("15_3p2gp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5000002, 0.016, -1.3499999)

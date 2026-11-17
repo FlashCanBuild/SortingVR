@@ -3,42 +3,102 @@
 [ext_resource type="Script" uid="uid://cp3x2fsc2ohni" path="res://scripts/PseudocodeBoard.gd" id="1_s4lqp"]
 [ext_resource type="FontFile" uid="uid://b4sffrp8vc8qc" path="res://assets/fonts/CONSOLA.TTF" id="2_ihax8"]
 
-[node name="PseudocodeBoard" type="Node3D" unique_id=1050903606 node_paths=PackedStringArray("code_label", "marker_label", "current_label")]
+[node name="PseudocodeBoard" type="Node3D" unique_id=1050903606 node_paths=PackedStringArray("line_labels")]
 script = ExtResource("1_s4lqp")
-code_label = NodePath("CodeLabel")
-marker_label = NodePath("MarkerLabel")
-current_label = NodePath("CurrentLabel")
+line_labels = [NodePath("CodeLabel"), NodePath("CodeLabel2"), NodePath("CodeLabel3"), NodePath("CodeLabel4"), NodePath("CodeLabel5"), NodePath("CodeLabel6"), NodePath("CodeLabel7"), NodePath("CodeLabel8"), NodePath("CodeLabel9"), NodePath("CodeLabel10"), NodePath("CodeLabel11"), NodePath("CodeLabel12")]
 
 [node name="CodeLabel" type="Label3D" parent="." unique_id=252320719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15000002, -2.4214387e-08, 0)
-text = "	\"for i = 0 to n - 2\",
-	\"    int minIndex = i\",
-	\"    for j = i + 1 to n - 1\",
-	\"        if arr[j] < arr[minIndex]\",
-	\"            minIndex = j\",
-	\"    if minIndex != i\",
-	\"        int temp = arr[i]\",
-	\"        arr[i] = arr[minIndex]\",
-	\"        arr[minIndex] = temp\","
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, -2.4214387e-08, 0)
+text = "Hello, this is a sample line!"
 font = ExtResource("2_ihax8")
 outline_size = 4
 horizontal_alignment = 0
 vertical_alignment = 0
 
-[node name="CurrentLabel" type="Label3D" parent="." unique_id=1380114742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.2, 0.002)
-modulate = Color(1, 1, 0, 1)
-text = "CURRENT"
+[node name="CodeLabel2" type="Label3D" parent="." unique_id=596339358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, -0.17500004, 0)
+text = "Console.WriteLine(\"Hello World!\");"
 font = ExtResource("2_ihax8")
 outline_size = 4
 horizontal_alignment = 0
 vertical_alignment = 0
 
-[node name="MarkerLabel" type="Label3D" parent="." unique_id=961629662]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000002, -2.4214387e-08, 0)
-text = "
->"
+[node name="CodeLabel3" type="Label3D" parent="." unique_id=794389282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-08, -0.35000002, 0)
+text = "System.out.println(\"Hello World\");"
 font = ExtResource("2_ihax8")
 outline_size = 4
-horizontal_alignment = 2
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel4" type="Label3D" parent="." unique_id=1290684987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0)
+text = "print(\"Hello World!\");"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel5" type="Label3D" parent="." unique_id=760988068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+text = "printf(\"Hello World!\");"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel6" type="Label3D" parent="." unique_id=621827168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+text = "cout << \"Hello World!\" << std::endl;"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel7" type="Label3D" parent="." unique_id=1667736456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 0)
+text = "console.log(\"Hello World!\");"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel8" type="Label3D" parent="." unique_id=1552607929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.225, 0)
+text = "public static void main(String[] args)"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel9" type="Label3D" parent="." unique_id=1260721465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+text = "int main(int argc, char** argv)"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel10" type="Label3D" parent="." unique_id=1621161864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.575, 0)
+text = "function main(int argc, string[] args)"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel11" type="Label3D" parent="." unique_id=2002127967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
+text = "bash runTests.sh -f \"Writer's Block\""
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="CodeLabel12" type="Label3D" parent="." unique_id=1918304198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.925, 0)
+text = "More text, blah blah blah blah"
+font = ExtResource("2_ihax8")
+outline_size = 4
+horizontal_alignment = 0
 vertical_alignment = 0

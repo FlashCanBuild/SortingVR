@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cfjj037dxmxgp"]
+
+[ext_resource type="Script" uid="uid://detu17xi7bsf2" path="res://CompareButton.gd" id="1_nhidb"]
+[ext_resource type="Script" uid="uid://dq042kibpfryy" path="res://addons/godot-xr-tools/interactables/interactable_area_button.gd" id="2_tjtqx"]
+[ext_resource type="FontFile" uid="uid://b4sffrp8vc8qc" path="res://assets/fonts/CONSOLA.TTF" id="3_e14yy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_idati"]
+top_radius = 0.125
+bottom_radius = 0.125
+height = 0.032
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_po5s0"]
+height = 0.032
+radius = 0.125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfnt0"]
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+metallic = 0.5
+metallic_specular = 0.65
+metallic_texture_channel = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_po5s0"]
+material = SubResource("StandardMaterial3D_pfnt0")
+top_radius = 0.157
+bottom_radius = 0.188
+height = 0.032
+
+[node name="CompareButton" type="Node3D" unique_id=1994112145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016, 0)
+script = ExtResource("1_nhidb")
+
+[node name="XRToolsInteractableAreaButton" type="Area3D" parent="." unique_id=262954018]
+script = ExtResource("2_tjtqx")
+button = NodePath("Button")
+metadata/_custom_type_script = "uid://dq042kibpfryy"
+
+[node name="Button" type="MeshInstance3D" parent="XRToolsInteractableAreaButton" unique_id=1296605495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032, 0)
+mesh = SubResource("CylinderMesh_idati")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsInteractableAreaButton" unique_id=59927462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032, 0)
+shape = SubResource("CylinderShape3D_po5s0")
+
+[node name="Label3D" type="Label3D" parent="XRToolsInteractableAreaButton" unique_id=681271945]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05, 0)
+text = "FALSE"
+font = ExtResource("3_e14yy")
+font_size = 16
+outline_size = 6
+uppercase = true
+
+[node name="ButtonBase" type="MeshInstance3D" parent="." unique_id=1091414458]
+mesh = SubResource("CylinderMesh_po5s0")
