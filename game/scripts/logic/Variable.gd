@@ -2,7 +2,6 @@
 ## store indices.
 ## An example would be loop-controlled variables like i and j, or 
 ## non-loop-controlled variables like minIndex.
-
 class_name Variable
 extends RefCounted
 
