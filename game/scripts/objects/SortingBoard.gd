@@ -9,9 +9,11 @@ extends Node3D
 @export var block_row: BlockRow
 ## A display of a sorting algorithm's pseudocode
 @export var pseudocode_board: PseudocodeBoard
+## 
+@export var slider_rack: SliderRack
 ## A button to press upon a [CompareStep] necessitating `true`
 @export var true_button: CompareButton
-## A button to press upon a [CompareStep] necessitating `true`
+## A button to press upon a [CompareStep] necessitating `false`
 @export var false_button: CompareButton
 
 ## Whether loop variables' sliders (like i and j) will automatically move upon 
@@ -48,6 +50,7 @@ var _busy: bool = false
 func _ready() -> void:
 	array_size = block_row.slots.size() # don't guess on array size
 	assert(array_size != null and array_size > 0, "SortingBoard: Number of slots is undefined or nonpositive!")
+	# Connect signals
 	for slot in block_row.slots:
 		slot.block_placed.connect(_on_block_placed)
 	block_row.temp_slot.block_placed.connect(_on_block_placed)
@@ -56,8 +59,9 @@ func _ready() -> void:
 	referee.stats_changed.connect(_on_stats_changed)
 	referee.restarted.connect(_on_restarted)
 	referee.finished.connect(_on_finished)
-	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed(true))
-	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed(false))
+	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed.bind(true))
+	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed.bind(false))
+	slider_rack.slider_released.connect(_on_slider_released)
 	
 	if start_on_ready:
 		randomize_run(array_size)
@@ -79,6 +83,7 @@ func reset_run() -> void:
 func start_run(values: Array) -> void:
 	_values = values.duplicate()
 	_rebuild_blocks()
+	slider_rack.setup(_algorithm.get_variables(), block_row, _values.size(), auto_move_loop_variables)
 	if pseudocode_board != null:
 		pseudocode_board.set_pseudocode(_algorithm.get_pseudocode())
 	referee.start(_algorithm, _values, auto_move_loop_variables)
@@ -129,8 +134,9 @@ func _return_block(block: SortBlock, wrong_slot: Slot, home: Slot, generation: i
 	
 ## Trigger a [CompareAction] with a given type depending on the button that is 
 ## pressed[br]
-## @param type	the type of button that is pressed (TRUE/FALSE)
-func _on_button_pressed(type: bool):
+## @param _button	the button that was pressed[br]
+## @param type		the type of button that is pressed (TRUE/FALSE)
+func _on_button_pressed(_button: XRToolsInteractableAreaButton, type: bool) -> void:
 	referee.submit(CompareAction.new(type))
 
 ## Trigger a teleport back to the block's home depending on where the block 
@@ -162,11 +168,12 @@ func _holder_of(block: Node3D) -> Slot:
 ## Update the autoplay and pseudocode board upon a completed step[br]
 ## @param waiting_for	the step we're now waiting on[br]
 ## @param _narrated		unused variable for any steps that aren't 
-func _on_step_advanced(waiting_for: Step, _narrated: Array) -> void:
+func _on_step_advanced(waiting_for: Step, narrated: Array) -> void:
+	_apply_narrated(narrated)
 	print("waiting on pseudocode line ", waiting_for.line)
 	if pseudocode_board != null:
 		pseudocode_board.point_at(waiting_for.line)
-	if debug_autoplay_non_moves and not (waiting_for is MoveStep):
+	if debug_autoplay_non_moves and not (waiting_for is MoveStep or waiting_for is SetStep):
 		call_deferred("_autoplay", waiting_for, _generation)
 
 ## Autoplay a step (complete a step without player input)[br]
@@ -209,11 +216,25 @@ func _on_stats_changed(progress: int, total: int, comparisons: int, mistakes: in
 ## Events to trigger upon a restart (defer call to rebuild blocks)
 func _on_restarted() -> void:
 	print("restarted")
+	slider_rack.reset_all()
 	call_deferred("_rebuild_blocks")
 
 ## Events to trigger upon a finish[br]
 ## @param _narrated		the remaining steps to auto-complete
-func _on_finished(_narrated: Array) -> void:
+func _on_finished(narrated: Array) -> void:
 	print("finished")
+	_apply_narrated(narrated)
 	if pseudocode_board != null:
 		pseudocode_board.point_at(-1)
+		
+func _apply_narrated(narrated: Array) -> void:
+	for step in narrated:
+		var set_step := step as SetStep
+		if set_step != null:
+			slider_rack.apply(set_step.variable, set_step.value)
+
+func _on_slider_released(slider: IndexSlider, index: int) -> void:
+	if referee.submit(SetAction.new(slider.variable.name, index)):
+		slider.commit(index)
+	else:
+		slider.revert()

@@ -70,10 +70,7 @@ func slot_for_index(slot_index: int) -> Slot:
 ## 					by the number of blocks. [br]
 ## @returns			The footprint (maximum safe size) 
 func _footprint(active: Array[Slot], unit: float) -> float:
-	var nearest := INF
-	for i in range(active.size() - 1):
-		nearest = minf(nearest, active[i].global_position.distance_to(active[i + 1].global_position))
-	return minf(unit, nearest / SPACING_FACTOR)
+	return minf(unit, slot_spacing(active.size()) / SPACING_FACTOR)
 
 ## Clear all slots and free (destroy) all blocks
 func _clear() -> void:
@@ -83,3 +80,9 @@ func _clear() -> void:
 	for block in blocks:
 		block.queue_free()
 	blocks.clear()
+
+func slot_spacing(count: int) -> float:
+	var nearest := INF
+	for i in range(count - 1):
+		nearest = minf(nearest, _ordered[i].global_position.distance_to(_ordered[i + 1].global_position))
+	return nearest

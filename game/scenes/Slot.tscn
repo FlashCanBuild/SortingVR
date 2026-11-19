@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bocmrh145jrsa"]
 
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_djgyf"]
-[ext_resource type="Script" uid="uid://dptowd1f3tffm" path="res://scripts/Slot.gd" id="1_mlwvr"]
+[ext_resource type="Script" uid="uid://dptowd1f3tffm" path="res://scripts/objects/Slot.gd" id="1_mlwvr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mlwvr"]
 resource_local_to_scene = true

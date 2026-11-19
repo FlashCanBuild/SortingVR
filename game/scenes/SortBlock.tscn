@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_tnhqg"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="2_2l3ww"]
-[ext_resource type="Script" uid="uid://bebb7ojlfgu1o" path="res://scripts/SortBlock.gd" id="2_amcgd"]
+[ext_resource type="Script" uid="uid://bebb7ojlfgu1o" path="res://scripts/objects/SortBlock.gd" id="2_amcgd"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_amcgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l3ww"]

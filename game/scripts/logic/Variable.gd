@@ -11,7 +11,10 @@ const UNDEFINED := -1
 var name: StringName
 ## Whether or not the variable is "loop-controlled" (like `i` in a for loop)
 var loop_controlled: bool
+## Color that corresponds to the variable.
+var color: Color
 
-func _init(var_name: StringName, is_loop_controlled: bool = false) -> void:
+func _init(var_name: StringName, is_loop_controlled: bool = false, var_color: Color = Color.WHITE) -> void:
 	name = var_name
 	loop_controlled = is_loop_controlled
+	color = var_color

@@ -30,9 +30,9 @@ func get_pseudocode() -> Array[String]:
 ## @returns array of [Variable]s
 func get_variables() -> Array[Variable]:
 	var variables: Array[Variable] = [
-		Variable.new(&"i", true),
-		Variable.new(&"j", true),
-		Variable.new(&"minIndex"),
+		Variable.new(&"i", true, Color.YELLOW),
+		Variable.new(&"j", true, Color.GREEN),
+		Variable.new(&"minIndex", false, Color.CYAN),
 	]
 	return variables
 

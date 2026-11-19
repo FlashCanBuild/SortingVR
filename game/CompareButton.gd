@@ -20,5 +20,12 @@ extends Node3D
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	(button_mesh.get_active_material() as StandardMaterial3D).albedo_color = color
+	var mat := button_mesh.get_active_material(0) as StandardMaterial3D
+	# Create a new StandardMaterial3D if none exists, or duplicate it so buttons don't share colors
+	if mat == null:
+		mat = StandardMaterial3D.new()
+	else:
+		mat = mat.duplicate() as StandardMaterial3D
+	mat.albedo_color = color
+	button_mesh.set_surface_override_material(0, mat)
 	label.text = buttonText
