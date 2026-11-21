@@ -16,7 +16,7 @@ extends Node3D
 ## The instance of [MeshInstance3D] representing the pressable part of the button
 @onready var button_mesh = $XRToolsInteractableAreaButton/Button
 ## The instance of [Label3D] that shows text on the button
-@onready var label = $XRToolsInteractableAreaButton/Label3D
+@onready var label = $XRToolsInteractableAreaButton/Button/Label3D
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:

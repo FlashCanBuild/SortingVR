@@ -12,6 +12,14 @@ func _ready():
 		# Turn off v-sync!
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
+		# Debugging signals
+		var openxr := xr_interface as OpenXRInterface
+		openxr.session_begun.connect(func(): print("session begun"))
+		openxr.session_synchronized.connect(func(): print("session synchronized"))
+		openxr.session_visible.connect(func(): print("session visible"))
+		openxr.session_focussed.connect(func(): print("session focussed"))
+		openxr.session_stopping.connect(func(): print("session stopping"))
+
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
 	else:

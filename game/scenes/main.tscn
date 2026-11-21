@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://rn0g6jlhdhxq"]
 
 [ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/Game.gd" id="1_qmy6f"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_mwfav"]
-[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_3p2gp"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_cvmbd"]
+[ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="4_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_ft6cd"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="6_bb450"]
+[ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="7_bb450"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_nfivy"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="9_1iba3"]
@@ -51,21 +50,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="LeftHand" parent="XROrigin3D/LeftHand" unique_id=927673984 instance=ExtResource("2_mwfav")]
-hand_material_override = ExtResource("3_3p2gp")
-
 [node name="MovementDirect" parent="XROrigin3D/LeftHand" unique_id=1671797340 instance=ExtResource("4_cvmbd")]
 strafe = true
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1802764684 instance=ExtResource("5_ft6cd")]
 ranged_enable = false
 
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftHand" unique_id=825021450 instance=ExtResource("4_ft6cd")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.025, 0.05)
+
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=446538727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
-
-[node name="RightHand" parent="XROrigin3D/RightHand" unique_id=644979548 instance=ExtResource("6_bb450")]
-hand_material_override = ExtResource("3_3p2gp")
 
 [node name="MovementTurn" parent="XROrigin3D/RightHand" unique_id=637026269 instance=ExtResource("7_nfivy")]
 
@@ -74,6 +70,9 @@ ranged_enable = false
 
 [node name="MovementJump" parent="XROrigin3D/RightHand" unique_id=1986962914 instance=ExtResource("8_1nqs0")]
 jump_button_action = "ax_button"
+
+[node name="RightPhysicsHand" parent="XROrigin3D/RightHand" unique_id=1725866972 instance=ExtResource("7_bb450")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.025, 0.05)
 
 [node name="PlayerBody" parent="XROrigin3D" unique_id=827412725 instance=ExtResource("9_1iba3")]
 push_rigid_bodies = false
@@ -103,7 +102,7 @@ true_button = NodePath("TrueButton")
 false_button = NodePath("FalseButton")
 
 [node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
-max_block_height = 2.5
+max_block_height = 1.25
 
 [node name="Referee" type="Node" parent="SortingBoard" unique_id=146909041]
 script = ExtResource("13_mwfav")

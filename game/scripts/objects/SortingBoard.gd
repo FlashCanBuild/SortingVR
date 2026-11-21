@@ -59,8 +59,8 @@ func _ready() -> void:
 	referee.stats_changed.connect(_on_stats_changed)
 	referee.restarted.connect(_on_restarted)
 	referee.finished.connect(_on_finished)
-	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed.bind(true))
-	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_button_pressed.bind(false))
+	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_compare_pressed.bind(true))
+	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_compare_pressed.bind(false))
 	slider_rack.slider_released.connect(_on_slider_released)
 	
 	if start_on_ready:
@@ -135,9 +135,10 @@ func _return_block(block: SortBlock, wrong_slot: Slot, home: Slot, generation: i
 ## Trigger a [CompareAction] with a given type depending on the button that is 
 ## pressed[br]
 ## @param _button	the button that was pressed[br]
-## @param type		the type of button that is pressed (TRUE/FALSE)
-func _on_button_pressed(_button: XRToolsInteractableAreaButton, type: bool) -> void:
-	referee.submit(CompareAction.new(type))
+## @param answer	the type of button that is pressed (TRUE/FALSE)
+func _on_compare_pressed(_button, answer: bool) -> void:
+	print("button pressed: " + str(answer))
+	referee.submit(CompareAction.new(answer))
 
 ## Trigger a teleport back to the block's home depending on where the block 
 ## drops[br]
@@ -173,7 +174,7 @@ func _on_step_advanced(waiting_for: Step, narrated: Array) -> void:
 	print("waiting on pseudocode line ", waiting_for.line)
 	if pseudocode_board != null:
 		pseudocode_board.point_at(waiting_for.line)
-	if debug_autoplay_non_moves and not (waiting_for is MoveStep or waiting_for is SetStep):
+	if debug_autoplay_non_moves and not (waiting_for is MoveStep or waiting_for is CompareStep):
 		call_deferred("_autoplay", waiting_for, _generation)
 
 ## Autoplay a step (complete a step without player input)[br]
