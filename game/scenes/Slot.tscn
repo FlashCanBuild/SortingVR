@@ -5,13 +5,18 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mlwvr"]
 resource_local_to_scene = true
-radius = 0.3
+radius = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_po5s0"]
-size = Vector3(0.25, 0.25, 0.25)
+size = Vector3(0.188, 0.248, 0.188)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhidb"]
+albedo_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+metallic = 0.35
 
 [sub_resource type="BoxMesh" id="BoxMesh_2l3ww"]
-size = Vector3(0.26, 0.005, 0.26)
+material = SubResource("StandardMaterial3D_nhidb")
+size = Vector3(0.188, 0.005, 0.188)
 
 [node name="Slot" type="Node3D" unique_id=1728868693 node_paths=PackedStringArray("snap_zone", "pad_mesh", "zone_box")]
 script = ExtResource("1_mlwvr")
@@ -26,9 +31,11 @@ snap_require = "SortBlock"
 shape = SubResource("SphereShape3D_mlwvr")
 
 [node name="ZoneBox" type="CollisionShape3D" parent="SnapZone" unique_id=2071243610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.122999996, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
 [node name="PadMesh" type="MeshInstance3D" parent="." unique_id=405688454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.003, 0)
 mesh = SubResource("BoxMesh_2l3ww")
 
 [editable path="SnapZone"]

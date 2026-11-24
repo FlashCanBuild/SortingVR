@@ -5,3 +5,4 @@ https://docs.godotengine.org/en/3.1/tutorials/vr/vr_starter_tutorial.html - Godo
 https://docs.godotengine.org/en/latest/tutorials/xr/index.html - Godot Documentation XR
 ## Assets
 https://wahooney.itch.io/texture-grid-generator - Test Grid Generator by Wahooney 2017
+https://kenney-assets.itch.io/space-station-kit - Space Station Kit by Kenney Game Assets - CC0 1.0 Universal License

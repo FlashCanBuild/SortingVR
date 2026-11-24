@@ -6,11 +6,11 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_po5s0"]
 height = 0.032
-radius = 0.125
+radius = 0.063
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_idati"]
-top_radius = 0.125
-bottom_radius = 0.125
+top_radius = 0.063
+bottom_radius = 0.063
 height = 0.032
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfnt0"]
@@ -21,8 +21,8 @@ metallic_texture_channel = 2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_po5s0"]
 material = SubResource("StandardMaterial3D_pfnt0")
-top_radius = 0.157
-bottom_radius = 0.188
+top_radius = 0.079
+bottom_radius = 0.094
 height = 0.032
 
 [node name="CompareButton" type="Node3D" unique_id=1994112145]
@@ -45,10 +45,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032, 0)
 mesh = SubResource("CylinderMesh_idati")
 
 [node name="Label3D" type="Label3D" parent="XRToolsInteractableAreaButton/Button" unique_id=681271945]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.018, 0)
+transform = Transform3D(0.12, 0, 0, 0, -5.2453664e-09, 1.188, 0, -0.12, -5.1929128e-08, 0, 0.018, 0)
 text = "FALSE"
 font = ExtResource("3_e14yy")
-font_size = 16
+font_size = 64
 outline_size = 6
 uppercase = true
 
