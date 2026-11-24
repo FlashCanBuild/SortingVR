@@ -9,7 +9,7 @@ extends Node3D
 @export var block_row: BlockRow
 ## A display of a sorting algorithm's pseudocode
 @export var pseudocode_board: PseudocodeBoard
-## 
+## The slider rack
 @export var slider_rack: SliderRack
 ## A button to press upon a [CompareStep] necessitating `true`
 @export var true_button: CompareButton
@@ -21,6 +21,8 @@ extends Node3D
 @export var auto_move_loop_variables: bool = true
 ## Whether the sorting board will automatically start on game start
 @export var start_on_ready: bool = true
+## 
+@export var compare_cooldown_sec: float = 1.0
 # [jag329] these two should be removed later
 ## Whether or not the debug will automatically play moves that we haven't 
 ## implemented yet
@@ -45,6 +47,8 @@ var _setting_up: bool = false
 ## True whenever the SortingBoard is calling a child to move or remove blocks. 
 ## This flag is needed due to the signals that are used.
 var _busy: bool = false
+## 
+var _last_compare_time: float = -INF
 
 ## Connect signals and set up the SortingBoard upon start.
 func _ready() -> void:
@@ -137,7 +141,10 @@ func _return_block(block: SortBlock, wrong_slot: Slot, home: Slot, generation: i
 ## @param _button	the button that was pressed[br]
 ## @param answer	the type of button that is pressed (TRUE/FALSE)
 func _on_compare_pressed(_button, answer: bool) -> void:
-	print("button pressed: " + str(answer))
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _last_compare_time < compare_cooldown_sec:
+		return
+	_last_compare_time = now
 	referee.submit(CompareAction.new(answer))
 
 ## Trigger a teleport back to the block's home depending on where the block 

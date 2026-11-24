@@ -72,6 +72,8 @@ func submit(action: PlayerAction) -> bool:
 	if _index >= _steps.size():
 		return false
 	var step := _steps[_index]
+	print("expected ", _describe_step(step))
+	print("got ", _describe_action(action))
 	# Check if the step is satisfied by the player's action (i.e. the player's 
 	# action is correct)
 	if step.is_satisfied_by(action):
@@ -139,3 +141,27 @@ func _needs_player(step: Step) -> bool:
 ## Emit the Referee's statistics to the [signal stats_changed] signal[br]
 func _emit_stats() -> void:
 	stats_changed.emit(_progress, _total, _comparisons, _mistakes)
+	
+func _describe_step(step: Step) -> String:
+	var compare_step := step as CompareStep
+	if compare_step != null:
+		return "compare: %s (line %d)" % [compare_step.expected, compare_step.line]
+	var move_step := step as MoveStep
+	if move_step != null:
+		return "move: %d -> %d (line %d)" % [move_step.from_slot, move_step.to_slot, move_step.line]
+	var set_step := step as SetStep
+	if set_step != null:
+		return "set %s %d (line %d)" % [set_step.variable, set_step.value, set_step.line]
+	return "unknown step"
+
+func _describe_action(action: PlayerAction) -> String:
+	var compare_action := action as CompareAction
+	if compare_action != null:
+		return "compare: %s" % [compare_action.answer]
+	var move_action := action as MoveAction
+	if move_action != null:
+		return "move: %d -> %d" % [move_action.from_slot, move_action.to_slot]
+	var set_action := action as SetAction
+	if set_action != null:
+		return "set %s %d" % [set_action.variable, set_action.value]
+	return "unknown action"

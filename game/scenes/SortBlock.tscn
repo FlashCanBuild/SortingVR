@@ -16,6 +16,7 @@ material = SubResource("StandardMaterial3D_amcgd")
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="SortBlock" unique_id=654789477 node_paths=PackedStringArray("mesh_instance", "collision_shape", "left_grab_point", "right_grab_point", "labels") groups=["SortBlock"] instance=ExtResource("1_tnhqg")]
+collision_mask = 65543
 script = ExtResource("2_amcgd")
 mesh_instance = NodePath("Mesh")
 collision_shape = NodePath("CollisionShape3D")
