@@ -15,6 +15,8 @@ extends Node3D
 @export var true_button: CompareButton
 ## A button to press upon a [CompareStep] necessitating `false`
 @export var false_button: CompareButton
+## 
+@export var snap_preview: SnapPreview
 
 ## Whether loop variables' sliders (like i and j) will automatically move upon 
 ## increment, decrement, and definition
@@ -151,11 +153,14 @@ func _on_compare_pressed(_button, answer: bool) -> void:
 ## drops[br]
 ## @param block	the block that was dropped
 func _on_block_dropped(block: Node3D) -> void:
+	print("f", Engine.get_process_frames(), " dropped signal block ", (block as SortBlock).value)
 	var generation := _generation
 	await get_tree().process_frame
-	if generation != _generation or not is_instance_valid(block):
+	if generation != _generation or not is_instance_valid(block) or _holder_of(block) != null or (block as SortBlock).is_picked_up():
 		return
-	if _holder_of(block) != null:
+	var target := snap_preview.nearest_slot_for(block as SortBlock)
+	if target != null:
+		target.place(block as SortBlock)
 		return
 	var home: Slot = _origin.get(block)
 	if home != null and home.is_empty():

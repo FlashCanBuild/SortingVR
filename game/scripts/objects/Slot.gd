@@ -78,11 +78,13 @@ func is_empty() -> bool:
 
 ## Wrapper signal to cast [XRToolsSnapZone]'s `has_picked_up` to a SortBlock.
 func _on_has_picked_up(what: Node3D) -> void:
+	print("f", Engine.get_process_frames(), " slot ", index, " picked up ", (what as SortBlock).value)
 	block = what as SortBlock
 	block_placed.emit(self, block)
 
 ## Wrapper signal to cast [XRToolsSnapZone]'s `has_dropped` to a SortBlock.
 func _on_has_dropped() -> void:
+	print("f", Engine.get_process_frames(), " slot ", index, " dropped ", block.value if block != null else "none")
 	var removed := block
 	block = null
 	block_removed.emit(self, removed)

@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dbroe5qah105h" path="res://assets/models/kenney_space_station_kit_glb/wall-banner.glb" id="17_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://coui2mo4atg65" path="res://scenes/IndexSlider.tscn" id="17_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://bh6e2bnh40ies" path="res://assets/models/kenney_space_station_kit_glb/wall-corner-round-banner.glb" id="18_1iba3"]
+[ext_resource type="Script" uid="uid://dclgxu6qr26ua" path="res://scripts/ui/SnapPreview.gd" id="18_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://dejq60lceyiwd" path="res://assets/models/kenney_space_station_kit_glb/wall-detail.glb" id="19_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://c2kibqw1ches7" path="res://assets/models/kenney_space_station_kit_glb/table-large.glb" id="20_ebg2g"]
 
@@ -223,7 +224,7 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board", "slider_rack", "true_button", "false_button")]
+[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board", "slider_rack", "true_button", "false_button", "snap_preview")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66)
 script = ExtResource("11_qmy6f")
 referee = NodePath("Referee")
@@ -232,10 +233,11 @@ pseudocode_board = NodePath("PseudocodeBoard")
 slider_rack = NodePath("SliderRack")
 true_button = NodePath("TrueButton")
 false_button = NodePath("FalseButton")
+snap_preview = NodePath("SnapPreview")
 debug_autoplay_non_moves = false
 
 [node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544, 0.9, 0.29999998)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5359999, 0.9, 0.19999999)
 max_block_height = 0.936
 
 [node name="Referee" type="Node" parent="SortingBoard" unique_id=146909041]
@@ -245,18 +247,17 @@ script = ExtResource("13_mwfav")
 transform = Transform3D(-0.9999999, 2.2626676e-08, 8.444389e-08, -1.7763568e-15, 0.96592563, -0.25881895, -8.742277e-08, -0.25881898, -0.9659255, 1.6586269, 3.4572542, 0.8220948)
 
 [node name="TrueButton" parent="SortingBoard" unique_id=1994112145 instance=ExtResource("15_3p2gp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5400001, 0.91599995, -0.29499987)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.74000007, 0.91599995, -0.26499987)
 compareType = true
 buttonText = "TRUE"
 color = Color(0, 0.72678816, 1.347661e-06, 1)
 
 [node name="FalseButton" parent="SortingBoard" unique_id=787987813 instance=ExtResource("15_3p2gp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.32999998, 0.916, -0.295)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.73999995, 0.916, -0.06499991)
 buttonText = "FALSE"
 color = Color(0.79897434, 4.379898e-06, 6.738305e-07, 1)
 
 [node name="SliderRack" type="Node3D" parent="SortingBoard" unique_id=532758840 node_paths=PackedStringArray("anchor", "preview_row")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89, 0.08)
 script = ExtResource("16_cvmbd")
 anchor = NodePath("Marker3D")
 slider_scene = ExtResource("17_ft6cd")
@@ -264,16 +265,21 @@ preview_row = NodePath("../BlockRow")
 SPACING = 0.125
 
 [node name="Marker3D" type="Marker3D" parent="SortingBoard/SliderRack" unique_id=423188410]
-transform = Transform3D(1, -2.622683e-07, -2.622683e-07, -2.622683e-07, -1, 8.742297e-08, -2.6226834e-07, -8.742285e-08, -1, 0.22500014, 0.049999967, -0.25)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.22500038, 1.2099999, -0.24999993)
 
 [node name="table-large2" parent="SortingBoard" unique_id=1124905051 instance=ExtResource("20_ebg2g")]
-transform = Transform3D(1, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.25, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SortingBoard/table-large2" unique_id=1325602503]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SortingBoard/table-large2/StaticBody3D" unique_id=68026738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_kqfgo")
+
+[node name="SnapPreview" type="Node3D" parent="SortingBoard" unique_id=597318526 node_paths=PackedStringArray("block_row")]
+script = ExtResource("18_yxlcp")
+block_row = NodePath("../BlockRow")
+snap_range = 0.5
 
 [node name="Building" type="Node3D" parent="." unique_id=1797969068]
 

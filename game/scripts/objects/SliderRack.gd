@@ -51,7 +51,7 @@ func setup(variables: Array[Variable], block_row: BlockRow, count: int, auto_mov
 	for i in variables.size():
 		var slider := slider_scene.instantiate() as IndexSlider
 		add_child(slider)
-		slider.global_transform = Transform3D(axes, track_origin - axes.y * SPACING * i)
+		slider.global_transform = Transform3D(axes, track_origin + axes.z * SPACING * i)
 		slider.configure(variables[i], count, step, auto_move)
 		slider.released_at.connect(_on_released_at)
 		_sliders[variables[i].name] = slider
@@ -99,7 +99,7 @@ func _draw_preview() -> void:
 	var track_origin := anchor.global_position + axes.x * along
 	_preview_mesh.surface_begin(Mesh.PRIMITIVE_LINES)
 	for i in preview_variables:
-		_add_track(Transform3D(axes, track_origin - axes.y * SPACING * i), step, count)
+		_add_track(Transform3D(axes, track_origin + axes.z * SPACING * i), step, count)
 	_preview_mesh.surface_end()
 	
 func _add_track(frame: Transform3D, step: float, count: int) -> void:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5l050stkv4v2"]
 
-[ext_resource type="Script" uid="uid://cp3x2fsc2ohni" path="res://scripts/objects/PseudocodeBoard.gd" id="1_s4lqp"]
+[ext_resource type="Script" uid="uid://cp3x2fsc2ohni" path="res://scripts/ui/PseudocodeBoard.gd" id="1_s4lqp"]
 [ext_resource type="FontFile" uid="uid://b4sffrp8vc8qc" path="res://assets/fonts/CONSOLA.TTF" id="2_ihax8"]
 
 [node name="PseudocodeBoard" type="Node3D" unique_id=1050903606 node_paths=PackedStringArray("line_labels")]
