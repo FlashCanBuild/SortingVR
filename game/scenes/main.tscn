@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bf3alvab6gt5i" path="res://scripts/objects/SortingBoard.gd" id="11_qmy6f"]
 [ext_resource type="Script" uid="uid://cfudkq7l1sfws" path="res://scripts/logic/Referee.gd" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
-[ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/PseudocodeBoard.tscn" id="14_mwfav"]
+[ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/PseudocodePanel.tscn" id="14_mwfav"]
 [ext_resource type="PackedScene" uid="uid://cfjj037dxmxgp" path="res://scenes/CompareButton.tscn" id="15_3p2gp"]
 [ext_resource type="Script" uid="uid://cvpm7yxn7y2xh" path="res://scripts/objects/SliderRack.gd" id="16_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://dbroe5qah105h" path="res://assets/models/kenney_space_station_kit_glb/wall-banner.glb" id="17_1nqs0"]
@@ -21,35 +21,36 @@
 [ext_resource type="Script" uid="uid://dclgxu6qr26ua" path="res://scripts/ui/SnapPreview.gd" id="18_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://dejq60lceyiwd" path="res://assets/models/kenney_space_station_kit_glb/wall-detail.glb" id="19_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://c2kibqw1ches7" path="res://assets/models/kenney_space_station_kit_glb/table-large.glb" id="20_ebg2g"]
+[ext_resource type="PackedScene" uid="uid://ckxx8x0g4dbb3" path="res://scenes/FloatingPanel.tscn" id="21_yxlcp"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1nqs0"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yxlcp"]
 animation = &"Grip"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1iba3"]
-animation = &"Grip"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_yxlcp"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ebg2g"]
-animation = &"Grip 5"
+animation = &"Grip"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_2ofn6"]
 filter_enabled = true
+filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xa025"]
+animation = &"Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_36rkl"]
+filter_enabled = true
 filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xa025"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fs0b5"]
 graph_offset = Vector2(-536, 11)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_1nqs0")
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_yxlcp")
 nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_1iba3")
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_ebg2g")
 nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_yxlcp")
+nodes/Grip/node = SubResource("AnimationNodeBlend2_2ofn6")
 nodes/Grip/position = Vector2(0, 20)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_ebg2g")
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_xa025")
 nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_2ofn6")
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_36rkl")
 nodes/Trigger/position = Vector2(-360, 20)
 node_connections = [&"output", 0, &"Grip", &"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1"]
 
@@ -189,7 +190,7 @@ transform = Transform3D(0.34089112, 0.9398443, 0.022029132, 0.1621622, -0.081866
 
 [node name="AnimationTree" parent="XROrigin3D/LeftHand/LeftPhysicsHand" index="1"]
 root_node = NodePath("../Hand_Nails_L")
-tree_root = SubResource("AnimationNodeBlendTree_xa025")
+tree_root = SubResource("AnimationNodeBlendTree_fs0b5")
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=446538727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -224,12 +225,12 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_board", "slider_rack", "true_button", "false_button", "snap_preview")]
+[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_panel", "slider_rack", "true_button", "false_button", "snap_preview")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66)
 script = ExtResource("11_qmy6f")
 referee = NodePath("Referee")
 block_row = NodePath("BlockRow")
-pseudocode_board = NodePath("PseudocodeBoard")
+pseudocode_panel = NodePath("../Panels/Pseudocode Panel")
 slider_rack = NodePath("SliderRack")
 true_button = NodePath("TrueButton")
 false_button = NodePath("FalseButton")
@@ -243,17 +244,14 @@ max_block_height = 0.936
 [node name="Referee" type="Node" parent="SortingBoard" unique_id=146909041]
 script = ExtResource("13_mwfav")
 
-[node name="PseudocodeBoard" parent="SortingBoard" unique_id=1050903606 instance=ExtResource("14_mwfav")]
-transform = Transform3D(-0.9999999, 2.2626676e-08, 8.444389e-08, -1.7763568e-15, 0.96592563, -0.25881895, -8.742277e-08, -0.25881898, -0.9659255, 1.6586269, 3.4572542, 0.8220948)
-
 [node name="TrueButton" parent="SortingBoard" unique_id=1994112145 instance=ExtResource("15_3p2gp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.74000007, 0.91599995, -0.26499987)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.74, 0.916, -0.265)
 compareType = true
 buttonText = "TRUE"
 color = Color(0, 0.72678816, 1.347661e-06, 1)
 
 [node name="FalseButton" parent="SortingBoard" unique_id=787987813 instance=ExtResource("15_3p2gp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.73999995, 0.916, -0.06499991)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.74, 0.916, -0.065)
 buttonText = "FALSE"
 color = Color(0.79897434, 4.379898e-06, 6.738305e-07, 1)
 
@@ -262,17 +260,17 @@ script = ExtResource("16_cvmbd")
 anchor = NodePath("Marker3D")
 slider_scene = ExtResource("17_ft6cd")
 preview_row = NodePath("../BlockRow")
-SPACING = 0.125
+SPACING = 0.188
 
 [node name="Marker3D" type="Marker3D" parent="SortingBoard/SliderRack" unique_id=423188410]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.22500038, 1.2099999, -0.24999993)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.931, 0.03)
 
-[node name="table-large2" parent="SortingBoard" unique_id=1124905051 instance=ExtResource("20_ebg2g")]
+[node name="Table" parent="SortingBoard" unique_id=1124905051 instance=ExtResource("20_ebg2g")]
 transform = Transform3D(1.25, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SortingBoard/table-large2" unique_id=1325602503]
+[node name="StaticBody3D" type="StaticBody3D" parent="SortingBoard/Table" unique_id=1325602503]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SortingBoard/table-large2/StaticBody3D" unique_id=68026738]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SortingBoard/Table/StaticBody3D" unique_id=68026738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_kqfgo")
 
@@ -299,6 +297,13 @@ transform = Transform3D(-1, 0, -9.685755e-08, 0, 1, 0, 9.685755e-08, 0, -1, 1.39
 
 [node name="wall-detail2" parent="Building/Walls" unique_id=2013114548 instance=ExtResource("19_yxlcp")]
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, 0.925, 0, -3.513)
+
+[node name="Panels" type="Node3D" parent="." unique_id=239004174]
+
+[node name="Pseudocode Panel" parent="Panels" unique_id=1706569191 instance=ExtResource("21_yxlcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05, 1.75, 1.66)
+content_scene = ExtResource("14_mwfav")
+width = 0.6
 
 [editable path="XROrigin3D/LeftHand/LeftPhysicsHand"]
 [editable path="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L"]

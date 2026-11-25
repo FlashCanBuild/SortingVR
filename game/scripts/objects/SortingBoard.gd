@@ -8,7 +8,7 @@ extends Node3D
 ## A series of [Slot]s to hold array values
 @export var block_row: BlockRow
 ## A display of a sorting algorithm's pseudocode
-@export var pseudocode_board: PseudocodeBoard
+@export var pseudocode_panel: FloatingPanel
 ## The slider rack
 @export var slider_rack: SliderRack
 ## A button to press upon a [CompareStep] necessitating `true`
@@ -51,9 +51,15 @@ var _setting_up: bool = false
 var _busy: bool = false
 ## 
 var _last_compare_time: float = -INF
+##
+var _pseudocode: PseudocodePanel
 
 ## Connect signals and set up the SortingBoard upon start.
 func _ready() -> void:
+	if not pseudocode_panel.is_node_ready():
+		await pseudocode_panel.ready
+	_pseudocode = pseudocode_panel.content as PseudocodePanel
+	assert(_pseudocode != null, "SortingBoard: the panel's content is not a PseudocodePanel")
 	array_size = block_row.slots.size() # don't guess on array size
 	assert(array_size != null and array_size > 0, "SortingBoard: Number of slots is undefined or nonpositive!")
 	# Connect signals
@@ -90,8 +96,8 @@ func start_run(values: Array) -> void:
 	_values = values.duplicate()
 	_rebuild_blocks()
 	slider_rack.setup(_algorithm.get_variables(), block_row, _values.size(), auto_move_loop_variables)
-	if pseudocode_board != null:
-		pseudocode_board.set_pseudocode(_algorithm.get_pseudocode())
+	if _pseudocode:
+		_pseudocode.set_pseudocode(_algorithm.get_pseudocode())
 	referee.start(_algorithm, _values, auto_move_loop_variables)
 
 ## Rebuild the blocks on top of the slots
@@ -184,8 +190,8 @@ func _holder_of(block: Node3D) -> Slot:
 func _on_step_advanced(waiting_for: Step, narrated: Array) -> void:
 	_apply_narrated(narrated)
 	print("waiting on pseudocode line ", waiting_for.line)
-	if pseudocode_board != null:
-		pseudocode_board.point_at(waiting_for.line)
+	if _pseudocode:
+		_pseudocode.point_at(waiting_for.line)
 	if debug_autoplay_non_moves and not (waiting_for is MoveStep or waiting_for is CompareStep):
 		call_deferred("_autoplay", waiting_for, _generation)
 
@@ -237,8 +243,8 @@ func _on_restarted() -> void:
 func _on_finished(narrated: Array) -> void:
 	print("finished")
 	_apply_narrated(narrated)
-	if pseudocode_board != null:
-		pseudocode_board.point_at(-1)
+	if _pseudocode:
+		_pseudocode.point_at(-1)
 		
 func _apply_narrated(narrated: Array) -> void:
 	for step in narrated:

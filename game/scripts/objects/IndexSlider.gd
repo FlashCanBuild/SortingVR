@@ -51,7 +51,7 @@ func configure(new_variable: Variable, count: int, step: float, auto_move: bool)
 	_step = step
 	_locked = variable.loop_controlled and auto_move
 	name_label.text = str(variable.name)
-	name_label.position = Vector3(-step - LABEL_MARGIN, 0.0, 0.0)
+	name_label.position.x = -step - LABEL_MARGIN
 	slider.slider_steps = 0.0
 	slider.slider_limit_min = -step
 	slider.slider_limit_max = (count - 1) * step

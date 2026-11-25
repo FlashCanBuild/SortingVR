@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b5l050stkv4v2"]
+
+[ext_resource type="Script" uid="uid://cp3x2fsc2ohni" path="res://scripts/ui/PseudocodePanel.gd" id="1_s4lqp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqfgo"]
+bg_color = Color(0, 0, 0, 0.49803922)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.78431374)
+border_blend = true
+
+[node name="PseudocodePanel" type="PanelContainer" unique_id=450814662 node_paths=PackedStringArray("lines_box", "margin_box")]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kqfgo")
+script = ExtResource("1_s4lqp")
+lines_box = NodePath("VBoxContainer")
+margin_box = NodePath("MarginContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1371605004]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=521894342]
+layout_mode = 2
