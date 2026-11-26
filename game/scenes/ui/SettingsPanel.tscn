@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://bqxd716afxdhx"]
+
+[ext_resource type="FontFile" uid="uid://dcex7he1qbkxm" path="res://assets/fonts/Orbitron/Orbitron-Black.ttf" id="1_cjf3c"]
+[ext_resource type="Script" uid="uid://bg8udoeko1eb4" path="res://scripts/ui/SettingsPanel.gd" id="1_idotu"]
+[ext_resource type="FontFile" uid="uid://befcpj02nnhag" path="res://assets/fonts/Orbitron/Orbitron-Bold.ttf" id="2_idotu"]
+
+[sub_resource type="Theme" id="Theme_g28q7"]
+default_font = ExtResource("2_idotu")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_n8wo2"]
+
+[sub_resource type="Theme" id="Theme_5t1r3"]
+default_font = ExtResource("2_idotu")
+default_font_size = 48
+
+[sub_resource type="Theme" id="Theme_cjf3c"]
+default_font = ExtResource("2_idotu")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_kqfgo"]
+default_font = ExtResource("2_idotu")
+default_font_size = 32
+
+[node name="SettingsPanel" type="PanelContainer" unique_id=1849284944 node_paths=PackedStringArray("music_slider", "sfx_slider", "auto_move_check", "height_label", "height_down_button", "height_up_button", "recenter_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idotu")
+music_slider = NodePath("MarginContainer/Rows/MusicRow/HSlider")
+sfx_slider = NodePath("MarginContainer/Rows/SFXRow/HSlider")
+auto_move_check = NodePath("MarginContainer/Rows/AutoMoveRow/CheckButton")
+height_label = NodePath("MarginContainer/Rows/HeightRow/Value")
+height_down_button = NodePath("MarginContainer/Rows/HeightRow/Minus")
+height_up_button = NodePath("MarginContainer/Rows/HeightRow/Plus")
+recenter_button = NodePath("MarginContainer/Rows/Recenter")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=663432883]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer" unique_id=1465652048]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="MarginContainer/Rows" unique_id=154353567]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cjf3c")
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Rows" unique_id=1448287525]
+layout_mode = 2
+
+[node name="MusicRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=68489031]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/MusicRow" unique_id=2014354068]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Rows/MusicRow" unique_id=1092155886]
+custom_minimum_size = Vector2(258, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_n8wo2")
+
+[node name="SFXRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=2021121058]
+layout_mode = 2
+theme = SubResource("Theme_5t1r3")
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/SFXRow" unique_id=1742055034]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Rows/SFXRow" unique_id=1003673301]
+custom_minimum_size = Vector2(258, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HeightRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=720678994]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/HeightRow" unique_id=1608115391]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_cjf3c")
+text = "Player Height"
+
+[node name="Minus" type="Button" parent="MarginContainer/Rows/HeightRow" unique_id=970765774]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = SubResource("Theme_kqfgo")
+text = "-"
+
+[node name="Value" type="Label" parent="MarginContainer/Rows/HeightRow" unique_id=1177495474]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_idotu")
+theme_override_font_sizes/font_size = 24
+text = "0.0 m"
+horizontal_alignment = 1
+
+[node name="Plus" type="Button" parent="MarginContainer/Rows/HeightRow" unique_id=998838508]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = SubResource("Theme_kqfgo")
+theme_override_font_sizes/font_size = 32
+text = "+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="AutoMoveRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=1603008178]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/Rows/AutoMoveRow" unique_id=1215486168]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+theme_override_font_sizes/font_size = 32
+text = "Auto-move loop variables"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/Rows/AutoMoveRow" unique_id=1418148477]
+layout_mode = 2
+size_flags_horizontal = 8
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+expand_icon = true
+
+[node name="Recenter" type="Button" parent="MarginContainer/Rows" unique_id=1862455222]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_idotu")
+theme_override_font_sizes/font_size = 32
+text = "Recenter VR Origin"

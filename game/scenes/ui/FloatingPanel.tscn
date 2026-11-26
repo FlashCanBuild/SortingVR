@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ckxx8x0g4dbb3"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_158do"]
+[ext_resource type="Script" uid="uid://pyxdhd03rt28" path="res://scripts/ui/FloatingPanel.gd" id="2_vd4ox"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_vd4ox"]
+[ext_resource type="Material" uid="uid://w46g1b0orhh1" path="res://assets/materials/floating_panel_handle.tres" id="4_t016g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_158do"]
+size = Vector3(3.007, 1.984, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4dtmd"]
+size = Vector3(1.023, 0.031, 0.001)
+
+[node name="FloatingPanel" unique_id=1706569191 node_paths=PackedStringArray("display", "body_shape", "handle_mesh") instance=ExtResource("1_158do")]
+collision_mask = 1
+gravity_scale = 0.0
+linear_damp = 1.5
+angular_damp = 3.0
+script = ExtResource("2_vd4ox")
+content_scene = null
+resolution = Vector2(1152, 648)
+width = 1.2
+thickness = 0.01
+display = NodePath("Display")
+body_shape = NodePath("CollisionShape3D")
+handle_height = 0.08
+handle_gap = 0.02
+handle_mesh = NodePath("HandleMesh")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_158do")
+
+[node name="Display" parent="." index="1" unique_id=414751920 instance=ExtResource("3_vd4ox")]
+transparent = 1
+unshaded = true
+scene_properties_keys = PackedStringArray()
+
+[node name="HandleMesh" type="MeshInstance3D" parent="." index="2" unique_id=1885288563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6071804e-08, -1.054, 0)
+material_override = ExtResource("4_t016g")
+mesh = SubResource("BoxMesh_4dtmd")

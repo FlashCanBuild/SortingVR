@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="2_2l3ww"]
 [ext_resource type="Script" uid="uid://bebb7ojlfgu1o" path="res://scripts/objects/SortBlock.gd" id="2_amcgd"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_amcgd"]
+[ext_resource type="Resource" uid="uid://dmpjtk0l8vh6v" path="res://addons/godot-xr-tools/hands/poses/pose_default_right.tres" id="4_r7uc3"]
+[ext_resource type="Resource" uid="uid://dertgu7k8alls" path="res://addons/godot-xr-tools/hands/poses/pose_default_left.tres" id="6_o6gq2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l3ww"]
 size = Vector3(0.156, 0.156, 0.156)
@@ -34,9 +36,11 @@ mesh = SubResource("BoxMesh_r7uc3")
 
 [node name="GrabPointHandRight" parent="." index="2" unique_id=7514196 instance=ExtResource("2_2l3ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.14, -0.11)
+hand_pose = ExtResource("4_r7uc3")
 
 [node name="GrabPointHandLeft" parent="." index="3" unique_id=2093744054 instance=ExtResource("3_amcgd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.14, -0.11)
+hand_pose = ExtResource("6_o6gq2")
 
 [node name="LabelRight" type="Label3D" parent="." index="4" unique_id=1297394179]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.08, 0.1, 0)

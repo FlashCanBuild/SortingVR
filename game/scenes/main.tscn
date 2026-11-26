@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cr6kfs0il48i5" path="res://scripts/Game.gd" id="1_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_cvmbd"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_ebg2g"]
 [ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="4_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_ft6cd"]
+[ext_resource type="Material" uid="uid://d124hbwnh72kl" path="res://assets/materials/pointer_target_material.tres" id="5_xa025"]
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="7_bb450"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="7_nfivy"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_1nqs0"]
@@ -12,7 +14,7 @@
 [ext_resource type="Script" uid="uid://bf3alvab6gt5i" path="res://scripts/objects/SortingBoard.gd" id="11_qmy6f"]
 [ext_resource type="Script" uid="uid://cfudkq7l1sfws" path="res://scripts/logic/Referee.gd" id="13_mwfav"]
 [ext_resource type="PackedScene" uid="uid://calmpm8nssn3p" path="res://scenes/BlockRow.tscn" id="13_xa025"]
-[ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/PseudocodePanel.tscn" id="14_mwfav"]
+[ext_resource type="PackedScene" uid="uid://b5l050stkv4v2" path="res://scenes/ui/PseudocodePanel.tscn" id="14_mwfav"]
 [ext_resource type="PackedScene" uid="uid://cfjj037dxmxgp" path="res://scenes/CompareButton.tscn" id="15_3p2gp"]
 [ext_resource type="Script" uid="uid://cvpm7yxn7y2xh" path="res://scripts/objects/SliderRack.gd" id="16_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://dbroe5qah105h" path="res://assets/models/kenney_space_station_kit_glb/wall-banner.glb" id="17_1nqs0"]
@@ -21,38 +23,8 @@
 [ext_resource type="Script" uid="uid://dclgxu6qr26ua" path="res://scripts/ui/SnapPreview.gd" id="18_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://dejq60lceyiwd" path="res://assets/models/kenney_space_station_kit_glb/wall-detail.glb" id="19_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://c2kibqw1ches7" path="res://assets/models/kenney_space_station_kit_glb/table-large.glb" id="20_ebg2g"]
-[ext_resource type="PackedScene" uid="uid://ckxx8x0g4dbb3" path="res://scenes/FloatingPanel.tscn" id="21_yxlcp"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yxlcp"]
-animation = &"Grip"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ebg2g"]
-animation = &"Grip"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_2ofn6"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xa025"]
-animation = &"Grip 5"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_36rkl"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fs0b5"]
-graph_offset = Vector2(-536, 11)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_yxlcp")
-nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_ebg2g")
-nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_2ofn6")
-nodes/Grip/position = Vector2(0, 20)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_xa025")
-nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_36rkl")
-nodes/Trigger/position = Vector2(-360, 20)
-node_connections = [&"output", 0, &"Grip", &"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1"]
+[ext_resource type="PackedScene" uid="uid://ckxx8x0g4dbb3" path="res://scenes/ui/FloatingPanel.tscn" id="21_yxlcp"]
+[ext_resource type="PackedScene" uid="uid://bqxd716afxdhx" path="res://scenes/ui/SettingsPanel.tscn" id="24_2ofn6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -81,8 +53,11 @@ size = Vector3(1.4, 0.4, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gta"]
 size = Vector3(1, 1.5, 0.3)
 
-[node name="Main" type="Node3D" unique_id=227518903]
+[node name="Main" type="Node3D" unique_id=227518903 node_paths=PackedStringArray("origin", "settings_panel", "sorting_board")]
 script = ExtResource("1_qmy6f")
+origin = NodePath("XROrigin3D")
+settings_panel = NodePath("Panels/Settings Panel")
+sorting_board = NodePath("SortingBoard")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=779980802]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
@@ -97,100 +72,20 @@ tracker = &"left_hand"
 [node name="MovementDirect" parent="XROrigin3D/LeftHand" unique_id=1671797340 instance=ExtResource("4_cvmbd")]
 strafe = true
 
-[node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1802764684 instance=ExtResource("5_ft6cd")]
-grab_distance = 0.05
-ranged_enable = false
-
 [node name="LeftPhysicsHand" parent="XROrigin3D/LeftHand" unique_id=825021450 instance=ExtResource("4_ft6cd")]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.025, 0.05)
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.025, 0.05)
 
-[node name="Hand_Nails_L" parent="XROrigin3D/LeftHand/LeftPhysicsHand" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.05)
+[node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1411427665 instance=ExtResource("5_ft6cd")]
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.024999976, 0.049999952)
+grab_distance = 0.05
 
-[node name="Skeleton3D" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature" index="0" unique_id=757859750]
-bones/1/rotation = Quaternion(0.323537, -2.5658142e-05, -0.027220426, 0.9458239)
-bones/2/rotation = Quaternion(-0.09044407, -0.04151748, -0.16629349, 0.98104167)
-bones/3/rotation = Quaternion(-0.04661986, 0.02097099, 0.010327632, 0.9986392)
-bones/5/rotation = Quaternion(-0.0012845465, -0.011608094, -0.016825877, 0.99979025)
-bones/6/rotation = Quaternion(0.10292491, -0.009932083, -0.007944166, 0.9946078)
-bones/7/rotation = Quaternion(-0.012859, -0.023610815, -0.32325828, 0.9459289)
-bones/8/rotation = Quaternion(0.012057539, -0.009291937, -0.24747224, 0.96877545)
-bones/10/rotation = Quaternion(-0.035753887, -0.0004000325, 0.0063676415, 0.9993403)
-bones/11/rotation = Quaternion(-0.0026496367, -0.0011447113, -0.12599176, 0.9920271)
-bones/12/rotation = Quaternion(0.039422527, 0.0019339261, -0.22807404, 0.97284347)
-bones/13/rotation = Quaternion(-0.012339468, -0.008812943, -0.28066906, 0.9596848)
-bones/15/rotation = Quaternion(-0.070265576, 0.010190836, -0.024330735, 0.9971795)
-bones/16/rotation = Quaternion(-0.032063447, -0.002236244, -0.06863657, 0.99712384)
-bones/17/rotation = Quaternion(0.025345208, 0.008124622, -0.2490055, 0.9681363)
-bones/18/rotation = Quaternion(0.0025223217, 0.007880732, -0.2432038, 0.9699399)
-bones/20/rotation = Quaternion(-0.09173688, 0.020302717, -0.010182976, 0.9955242)
-bones/21/rotation = Quaternion(-0.06251818, -0.00022572002, -0.115392834, 0.99135065)
-bones/22/rotation = Quaternion(0.058578636, 0.021648303, -0.26990518, 0.9608596)
-bones/23/rotation = Quaternion(0.006871769, -0.0035727466, -0.21195254, 0.97724926)
-
-[node name="BoneRoot" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.8307694e-05, 1.526405e-08, 1.5267688e-08, 0.0016677378, 0.99999857, -1.8307695e-05, -0.9999985, 0.001667738, 3.8642522e-08, -1.8697472e-05, 0.027175574)
-
-[node name="BoneThumbMetacarpal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.99851906, 0.05146041, -0.017650949, -0.017650954, 0.61333454, 0.7896257, 0.051460408, -0.7881447, 0.6133346, 0.009999541, 0.020026565, 3.5932288e-05)
-
-[node name="BoneThumbProximal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.92147875, 0.3839583, -0.058762792, -0.12405168, 0.43426406, 0.8922026, 0.36808717, -0.8148562, 0.44779575, 0.012310961, 0.0475754, -0.035364762)
-
-[node name="BoneThumbDistal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.9301587, 0.36684424, 0.015170805, -0.15403655, 0.3523961, 0.923087, 0.33328292, -0.8609542, 0.38429177, 0.028493993, 0.06587872, -0.069709234)
-
-[node name="BoneIndexMetacarpal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.9991648, 0.03365621, -0.023168128, 0.023198463, -0.0005111295, 0.99973065, 0.03363531, -0.99943316, -0.0012914749, -0.010000459, 0.022431742, 3.5928562e-05)
-
-[node name="BoneIndexProximal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.99782103, 0.041938446, -0.050932642, 0.04131695, 0.20466141, 0.97796035, 0.051438086, -0.97793394, 0.20248269, -0.0072955904, 0.022390667, -0.0802861)
-
-[node name="BoneIndexMiddle" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="7"]
-transform = Transform3D(0.7598513, 0.6444533, -0.0854741, -0.040588047, 0.17825112, 0.9831475, 0.64882857, -0.7435767, 0.16160142, -0.00569705, 0.030191608, -0.117561355)
-
-[node name="BoneIndexDistal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="8"]
-transform = Transform3D(0.35646763, 0.92711097, -0.11574115, -0.109286234, 0.16440362, 0.9803203, 0.92789406, -0.33680356, 0.159925, 0.014503772, 0.03577901, -0.14086926)
-
-[node name="BoneMiddleMetacarpal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="9"]
-transform = Transform3D(0.99991834, -0.0127165355, -0.0012561659, 0.0003654889, -0.06980224, 0.99756074, -0.012773201, -0.9974796, -0.0697919, -0.010000459, 0.0035541577, 3.5928562e-05)
-
-[node name="BoneMiddleProximal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="10"]
-transform = Transform3D(0.9713455, 0.23765375, -0.0029300377, 0.020733906, -0.07245027, 0.99715644, 0.23676565, -0.9686441, -0.07530175, -0.011023673, -0.0020623559, -0.080224514)
-
-[node name="BoneMiddleMiddle" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="11"]
-transform = Transform3D(0.7649224, 0.6431615, -0.03517176, 0.029032733, 0.020122506, 0.9993758, 0.6434677, -0.76546603, -0.0032805875, -0.00032845605, -0.0053228606, -0.12381674)
-
-[node name="BoneMiddleDistal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="12"]
-transform = Transform3D(0.29711512, 0.9545305, -0.024381766, 0.037445363, 0.013867281, 0.9992023, 0.95410705, -0.29779115, -0.03162256, 0.020520713, -0.0046705557, -0.14863062)
-
-[node name="BoneRingMetacarpal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="13"]
-transform = Transform3D(0.99860924, 0.04707398, 0.023740869, -0.016988235, -0.13898116, 0.9901492, 0.049909797, -0.9891754, -0.13798817, -0.010000458, -0.01307344, 3.5930425e-05)
-
-[node name="BoneRingProximal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="14"]
-transform = Transform3D(0.98296404, 0.18185404, 0.026658198, 0.010949358, -0.20272228, 0.97917485, 0.1834711, -0.96220183, -0.20125991, -0.006519627, -0.023350239, -0.073107496)
-
-[node name="BoneRingMiddle" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="15"]
-transform = Transform3D(0.77257895, 0.6346031, 0.02001641, 0.07948446, -0.12794775, 0.9885905, 0.62992376, -0.7621731, -0.1492908, 0.0007783938, -0.031485725, -0.11172181)
-
-[node name="BoneRingDistal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="16"]
-transform = Transform3D(0.38138747, 0.9240679, 0.02533904, 0.11410464, -0.07425989, 0.9906892, 0.9173458, -0.37494507, -0.13376221, 0.018418808, -0.03504236, -0.13290837)
-
-[node name="BonePinkyMetacarpal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="17"]
-transform = Transform3D(0.9989686, 0.01653178, 0.042288676, -0.038595337, -0.18142645, 0.98264676, 0.023917189, -0.98326534, -0.18060131, -4.582105e-07, -0.029973432, 3.5930425e-05)
-
-[node name="BonePinkyProximal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="18"]
-transform = Transform3D(0.9692122, 0.23930426, 0.057974495, 0.018553527, -0.30576056, 0.95192754, 0.24552666, -0.921544, -0.30078688, 0.0010858651, -0.04189518, -0.0645756)
-
-[node name="BonePinkyMiddle" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="19"]
-transform = Transform3D(0.6993308, 0.7138156, 0.037460223, 0.103946626, -0.15340722, 0.9826807, 0.70719945, -0.68332475, -0.1814813, 0.009012471, -0.052023053, -0.0951004)
-
-[node name="BonePinkyDistal" parent="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L/Armature/Skeleton3D" index="20"]
-transform = Transform3D(0.34089112, 0.9398443, 0.022029132, 0.1621622, -0.08186697, 0.9833622, 0.9260107, -0.3316469, -0.18031517, 0.02187856, -0.054788124, -0.10741691)
-
-[node name="AnimationTree" parent="XROrigin3D/LeftHand/LeftPhysicsHand" index="1"]
-root_node = NodePath("../Hand_Nails_L")
-tree_root = SubResource("AnimationNodeBlendTree_fs0b5")
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" unique_id=1172037962 instance=ExtResource("4_ebg2g")]
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0.01999998, -0.00258559, -0.059533536)
+show_laser = 0
+laser_length = 1
+show_target = true
+target_radius = 0.025
+target_material = ExtResource("5_xa025")
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=446538727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -198,15 +93,23 @@ tracker = &"right_hand"
 
 [node name="MovementTurn" parent="XROrigin3D/RightHand" unique_id=637026269 instance=ExtResource("7_nfivy")]
 
-[node name="FunctionPickup" parent="XROrigin3D/RightHand" unique_id=440373928 instance=ExtResource("5_ft6cd")]
-grab_distance = 0.05
-ranged_enable = false
-
 [node name="MovementJump" parent="XROrigin3D/RightHand" unique_id=1986962914 instance=ExtResource("8_1nqs0")]
 jump_button_action = "ax_button"
 
 [node name="RightPhysicsHand" parent="XROrigin3D/RightHand" unique_id=1725866972 instance=ExtResource("7_bb450")]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.025, 0.05)
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.025, 0.05)
+
+[node name="FunctionPickup" parent="XROrigin3D/RightHand" unique_id=521705608 instance=ExtResource("5_ft6cd")]
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.024999976, 0.050000012)
+grab_distance = 0.05
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" unique_id=1959657715 instance=ExtResource("4_ebg2g")]
+transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, -0.01999998, -0.00258559, -0.059533536)
+show_laser = 0
+laser_length = 1
+show_target = true
+target_radius = 0.025
+target_material = ExtResource("5_xa025")
 
 [node name="PlayerBody" parent="XROrigin3D" unique_id=827412725 instance=ExtResource("9_1iba3")]
 push_rigid_bodies = false
@@ -266,7 +169,7 @@ SPACING = 0.188
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.931, 0.03)
 
 [node name="Table" parent="SortingBoard" unique_id=1124905051 instance=ExtResource("20_ebg2g")]
-transform = Transform3D(1.25, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SortingBoard/Table" unique_id=1325602503]
 
@@ -301,9 +204,10 @@ transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, 0.925, 0, -3.513)
 [node name="Panels" type="Node3D" parent="." unique_id=239004174]
 
 [node name="Pseudocode Panel" parent="Panels" unique_id=1706569191 instance=ExtResource("21_yxlcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05, 1.75, 1.66)
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.9934316, 1.09, 1.6034315)
 content_scene = ExtResource("14_mwfav")
 width = 0.6
 
-[editable path="XROrigin3D/LeftHand/LeftPhysicsHand"]
-[editable path="XROrigin3D/LeftHand/LeftPhysicsHand/Hand_Nails_L"]
+[node name="Settings Panel" parent="Panels" unique_id=828482420 instance=ExtResource("21_yxlcp")]
+transform = Transform3D(0.49999997, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.49999997, 4.267853, 1.35, -1.4778531)
+content_scene = ExtResource("24_2ofn6")
