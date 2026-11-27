@@ -9,6 +9,8 @@ extends Node3D
 @export var block_row: BlockRow
 ## A display of a sorting algorithm's pseudocode
 @export var pseudocode_panel: FloatingPanel
+##
+@export var stats_panel: FloatingPanel
 ## The slider rack
 @export var slider_rack: SliderRack
 ## A button to press upon a [CompareStep] necessitating `true`
@@ -17,6 +19,7 @@ extends Node3D
 @export var false_button: CompareButton
 ## 
 @export var snap_preview: SnapPreview
+
 
 ## Whether loop variables' sliders (like i and j) will automatically move upon 
 ## increment, decrement, and definition
@@ -53,13 +56,22 @@ var _busy: bool = false
 var _last_compare_time: float = -INF
 ##
 var _pseudocode: PseudocodePanel
+## 
+var _stats: StatsPanel
 
 ## Connect signals and set up the SortingBoard upon start.
 func _ready() -> void:
+	# assert pseudocode
 	if not pseudocode_panel.is_node_ready():
 		await pseudocode_panel.ready
 	_pseudocode = pseudocode_panel.content as PseudocodePanel
 	assert(_pseudocode != null, "SortingBoard: the panel's content is not a PseudocodePanel")
+	# assert stats panel
+	if not stats_panel.is_node_ready():
+		await stats_panel.ready
+	_stats = stats_panel.content as StatsPanel
+	assert(_stats != null, "SortingBoard: the panel's content is not a StatsPanel")
+	# check array size
 	array_size = block_row.slots.size() # don't guess on array size
 	assert(array_size != null and array_size > 0, "SortingBoard: Number of slots is undefined or nonpositive!")
 	# Connect signals
@@ -74,7 +86,9 @@ func _ready() -> void:
 	(true_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_compare_pressed.bind(true))
 	(false_button.button_interact as XRToolsInteractableAreaButton).button_pressed.connect(_on_compare_pressed.bind(false))
 	slider_rack.slider_released.connect(_on_slider_released)
-	
+	_stats.randomize_requested.connect(randomize_run)
+	_stats.reset_requested.connect(reset_run)
+	# Finally, if start on ready
 	if start_on_ready:
 		randomize_run(array_size)
 
@@ -98,6 +112,8 @@ func start_run(values: Array) -> void:
 	slider_rack.setup(_algorithm.get_variables(), block_row, _values.size(), auto_move_loop_variables)
 	if _pseudocode:
 		_pseudocode.set_pseudocode(_algorithm.get_pseudocode())
+	if _stats:
+		_stats.set_sort_name(_algorithm.algorithm_name())
 	referee.start(_algorithm, _values, auto_move_loop_variables)
 
 ## Rebuild the blocks on top of the slots
@@ -231,6 +247,8 @@ func _on_mistake_made(mistakes: int, _expected: Step) -> void:
 ## @param mistakes		the number of mistakes made
 func _on_stats_changed(progress: int, total: int, comparisons: int, mistakes: int) -> void:
 	print("progress ", progress, "/", total, " | comparisons ", comparisons, " | mistakes ", mistakes)
+	if _stats:
+		_stats.show_stats(progress, total, comparisons, mistakes)
 
 ## Events to trigger upon a restart (defer call to rebuild blocks)
 func _on_restarted() -> void:

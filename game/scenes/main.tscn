@@ -136,7 +136,11 @@ slider_rack = NodePath("SliderRack")
 true_button = NodePath("TrueButton")
 false_button = NodePath("FalseButton")
 snap_preview = NodePath("SnapPreview")
+auto_move_loop_variables = null
+start_on_ready = null
+compare_cooldown_sec = null
 debug_autoplay_non_moves = false
+debug_autoplay_delay = null
 
 [node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5359999, 0.9, 0.19999999)
