@@ -22,15 +22,17 @@ name_label = NodePath("NameLabel")
 pointer_mesh = NodePath("InteractableSlider/InteractableHandle/MeshInstance3D")
 
 [node name="NameLabel" type="Label3D" parent="." unique_id=2026260301]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 1, 0, -0.5, -4.371139e-08, -0.125, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 1, 0, -0.5, -4.371139e-08, -0.125, -0.029, 0)
 text = "Variable Name"
 font = ExtResource("2_d5pvm")
 horizontal_alignment = 2
 
 [node name="InteractableSlider" parent="." unique_id=795347943 instance=ExtResource("3_enhhj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031, 0)
 
 [node name="InteractableHandle" parent="InteractableSlider" unique_id=1590175448 instance=ExtResource("4_puo3v")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableSlider/InteractableHandle" unique_id=1802881771]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)

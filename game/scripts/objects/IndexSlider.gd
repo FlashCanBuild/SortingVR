@@ -35,8 +35,19 @@ var _snapping: bool = false
 var _tween: Tween
 
 func _ready() -> void:
+	process_priority = 100
 	## Connect the slider's release signal to the _on_released 
 	slider.released.connect(_on_released)
+	
+func _process(_delta: float) -> void:
+	if not handle.is_picked_up():
+		return
+	var local := to_local(handle.global_position)
+	local.x = clampf(local.x, slider.slider_limit_min, slider.slider_limit_max)
+	local.y = slider.position.y
+	local.z = slider.position.z
+	handle.global_position = to_global(local)
+	handle.basis = Basis.IDENTITY
 
 ## Configure the IndexSlider's fields[br]
 ## @param new_variable	the variable in which to track with this slider[br]

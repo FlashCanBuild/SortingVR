@@ -76,11 +76,10 @@ strafe = true
 transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.025, 0.05)
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" unique_id=1411427665 instance=ExtResource("5_ft6cd")]
-transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.024999976, 0.049999952)
 grab_distance = 0.05
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" unique_id=1172037962 instance=ExtResource("4_ebg2g")]
-transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0.01999998, -0.00258559, -0.059533536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 0.05, -0.1)
 show_laser = 0
 laser_length = 1
 show_target = true
@@ -100,11 +99,10 @@ jump_button_action = "ax_button"
 transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.025, 0.05)
 
 [node name="FunctionPickup" parent="XROrigin3D/RightHand" unique_id=521705608 instance=ExtResource("5_ft6cd")]
-transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, 0, -0.024999976, 0.050000012)
 grab_distance = 0.05
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" unique_id=1959657715 instance=ExtResource("4_ebg2g")]
-transform = Transform3D(0.999919, 0.0041510724, 0.012032808, -0.0041547753, 0.9999913, 0.00028285384, -0.01203153, -0.00033283234, 0.9999275, -0.01999998, -0.00258559, -0.059533536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0.05, -0.1)
 show_laser = 0
 laser_length = 1
 show_target = true
@@ -169,7 +167,7 @@ SPACING = 0.188
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.931, 0.03)
 
 [node name="Table" parent="SortingBoard" unique_id=1124905051 instance=ExtResource("20_ebg2g")]
-transform = Transform3D(1.5, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.75, 0, 0, 0, 2.25, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SortingBoard/Table" unique_id=1325602503]
 
@@ -204,7 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, 0.925, 0, -3.513)
 [node name="Panels" type="Node3D" parent="." unique_id=239004174]
 
 [node name="Pseudocode Panel" parent="Panels" unique_id=1706569191 instance=ExtResource("21_yxlcp")]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.9934316, 1.09, 1.6034315)
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.9934316, 1.5, 1.6034315)
 content_scene = ExtResource("14_mwfav")
 width = 0.6
 
