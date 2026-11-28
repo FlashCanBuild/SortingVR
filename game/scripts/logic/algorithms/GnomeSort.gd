@@ -24,6 +24,18 @@ func get_variables() -> Array[Variable]:
 		Variable.new(&"pos", false, Color.YELLOW),
 	]
 	return variables
+	
+func description() -> String:
+	return "Steps forward while blocks are in order, and steps back after every swap. Nicknamed \"stupid sort\"."
+
+func best_case() -> String:
+	return "O(n)"
+
+func average_case() -> String:
+	return "O(n^2)"
+
+func worst_case() -> String:
+	return "O(n^2)"
 
 func build(values: Array) -> Array[Step]:
 	var a := values.duplicate()

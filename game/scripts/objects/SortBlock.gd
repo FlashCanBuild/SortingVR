@@ -112,3 +112,14 @@ func _layout_labels(footprint: float) -> void:
 		label.pixel_size = footprint * LABEL_SCALE / LABEL_FONT_SIZE
 		label.rotation_degrees = Vector3(0.0, angle, 0.0)
 		label.position = face_offset.rotated(Vector3.UP, deg_to_rad(angle))
+		
+func rise(duration: float, delay: float) -> void:
+	var tween := create_tween().set_parallel(true)
+	_rise_node(tween, mesh_instance, duration, delay)
+	for label in labels:
+		_rise_node(tween, label, duration, delay)
+
+func _rise_node(tween: Tween, node: Node3D, duration: float, delay: float) -> void:
+	var target := node.position.y
+	node.position.y = target - block_height
+	tween.tween_property(node, "position:y", target, duration).set_delay(delay).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

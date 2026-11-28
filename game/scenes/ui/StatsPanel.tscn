@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cj0fuakguo23k" path="res://scripts/ui/StatsPanel.gd" id="1_pc8i4"]
 [ext_resource type="FontFile" uid="uid://dcex7he1qbkxm" path="res://assets/fonts/Orbitron/Orbitron-Black.ttf" id="2_u3lpm"]
 [ext_resource type="FontFile" uid="uid://befcpj02nnhag" path="res://assets/fonts/Orbitron/Orbitron-Bold.ttf" id="3_lyrpg"]
+[ext_resource type="FontFile" uid="uid://d0qldj01a8bqj" path="res://assets/fonts/Orbitron/Orbitron-SemiBold.ttf" id="4_u3lpm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqfgo"]
 bg_color = Color(0.18653595, 0.27330652, 0.15036598, 1)
@@ -11,19 +12,29 @@ bg_color = Color(0.18653595, 0.27330652, 0.15036598, 1)
 default_font = ExtResource("3_lyrpg")
 default_font_size = 32
 
-[node name="StatsPanel" type="PanelContainer" unique_id=1849284944 node_paths=PackedStringArray("sort_name_label", "progress_bar", "comparisons_label", "mistakes_label", "randomize_button", "reset_button")]
+[node name="StatsPanel" type="PanelContainer" unique_id=1849284944 node_paths=PackedStringArray("start_button", "previous_button", "next_button", "menu_button", "idle_controls", "running_controls", "sort_name_label", "progress_bar", "comparisons_label", "mistakes_label", "randomize_button", "reset_button", "description_label", "best_label", "average_label", "worst_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pc8i4")
+start_button = NodePath("MarginContainer/Rows/SelectRow/Start")
+previous_button = NodePath("MarginContainer/Rows/SelectRow/Previous")
+next_button = NodePath("MarginContainer/Rows/SelectRow/Next")
+menu_button = NodePath("MarginContainer/Rows/ButtonRow/Menu")
+idle_controls = [NodePath("MarginContainer/Rows/SelectRow"), NodePath("MarginContainer/Rows/HSeparator4"), NodePath("MarginContainer/Rows/HSeparator3")]
+running_controls = [NodePath("MarginContainer/Rows/ProgressBar"), NodePath("MarginContainer/Rows/ComparisonsRow"), NodePath("MarginContainer/Rows/MistakesRow"), NodePath("MarginContainer/Rows/ButtonRow")]
 sort_name_label = NodePath("MarginContainer/Rows/SortName")
 progress_bar = NodePath("MarginContainer/Rows/ProgressBar")
 comparisons_label = NodePath("MarginContainer/Rows/ComparisonsRow/Value")
 mistakes_label = NodePath("MarginContainer/Rows/MistakesRow/Value")
 randomize_button = NodePath("MarginContainer/Rows/ButtonRow/Randomize")
 reset_button = NodePath("MarginContainer/Rows/ButtonRow/Reset")
+description_label = NodePath("MarginContainer/Rows/Description")
+best_label = NodePath("MarginContainer/Rows/ComplexityBox/Best/Value")
+average_label = NodePath("MarginContainer/Rows/ComplexityBox/Average/Value")
+worst_label = NodePath("MarginContainer/Rows/ComplexityBox/Worst/Value")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=663432883]
 layout_mode = 2
@@ -34,7 +45,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="Rows" type="VBoxContainer" parent="MarginContainer" unique_id=1465652048]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 16
 
 [node name="SortName" type="Label" parent="MarginContainer/Rows" unique_id=154353567]
 layout_mode = 2
@@ -43,10 +54,45 @@ theme_override_font_sizes/font_size = 80
 text = "Selection Sort"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/Rows" unique_id=1448287525]
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/Rows" unique_id=1883119545]
+layout_mode = 2
+
+[node name="SelectRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=1026303847]
+layout_mode = 2
+alignment = 1
+
+[node name="Previous" type="Button" parent="MarginContainer/Rows/SelectRow" unique_id=159485848]
+custom_minimum_size = Vector2(100, 0)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_u3lpm")
+theme_override_font_sizes/font_size = 48
+text = "<-"
+
+[node name="Start" type="Button" parent="MarginContainer/Rows/SelectRow" unique_id=386810346]
+custom_minimum_size = Vector2(325, 0)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_u3lpm")
+theme_override_font_sizes/font_size = 48
+text = "START!"
+
+[node name="Next" type="Button" parent="MarginContainer/Rows/SelectRow" unique_id=1517908131]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_u3lpm")
+theme_override_font_sizes/font_size = 48
+text = "->"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/Rows" unique_id=1156459681]
+visible = false
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Rows" unique_id=876329688]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 4
@@ -57,6 +103,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kqfgo")
 value = 50.0
 
 [node name="ComparisonsRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=68489031]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/ComparisonsRow" unique_id=2014354068]
@@ -76,6 +123,7 @@ theme_override_font_sizes/font_size = 48
 text = "0"
 
 [node name="MistakesRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=1782881846]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Rows/MistakesRow" unique_id=462217985]
@@ -98,10 +146,11 @@ text = "0/3"
 layout_mode = 2
 
 [node name="ButtonRow" type="HBoxContainer" parent="MarginContainer/Rows" unique_id=1603008178]
+visible = false
 layout_mode = 2
 
 [node name="Randomize" type="Button" parent="MarginContainer/Rows/ButtonRow" unique_id=1697317143]
-custom_minimum_size = Vector2(480, 0)
+custom_minimum_size = Vector2(325, 0)
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 2
@@ -110,9 +159,89 @@ theme_override_font_sizes/font_size = 48
 text = "Randomize"
 
 [node name="Reset" type="Button" parent="MarginContainer/Rows/ButtonRow" unique_id=1352978092]
-custom_minimum_size = Vector2(480, 0)
+custom_minimum_size = Vector2(325, 0)
 layout_mode = 2
+size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("2_u3lpm")
 theme_override_font_sizes/font_size = 48
 text = "Reset
 "
+
+[node name="Menu" type="Button" parent="MarginContainer/Rows/ButtonRow" unique_id=161055954]
+custom_minimum_size = Vector2(325, 0)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_u3lpm")
+theme_override_font_sizes/font_size = 48
+text = "Menu"
+
+[node name="Description" type="Label" parent="MarginContainer/Rows" unique_id=1751733023]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+theme_override_fonts/font = ExtResource("4_u3lpm")
+theme_override_font_sizes/font_size = 40
+text = "Repeatedly finds the smallest unsorted block and swaps it into place."
+autowrap_mode = 3
+
+[node name="ComplexityBox" type="VBoxContainer" parent="MarginContainer/Rows" unique_id=1374347100]
+layout_mode = 2
+
+[node name="Best" type="HBoxContainer" parent="MarginContainer/Rows/ComplexityBox" unique_id=679040003]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ComplexityBox/Best" unique_id=559942259]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(0.6326298, 0.805035, 0.55736446, 1)
+theme_override_font_sizes/font_size = 48
+text = "Best-Case"
+
+[node name="Value" type="Label" parent="MarginContainer/Rows/ComplexityBox/Best" unique_id=987453368]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(0.6313726, 0.8039216, 0.5568628, 1)
+theme_override_font_sizes/font_size = 48
+text = "O(n)"
+
+[node name="Average" type="HBoxContainer" parent="MarginContainer/Rows/ComplexityBox" unique_id=2056825132]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ComplexityBox/Average" unique_id=616068261]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(0.9922194, 1, 0.74708897, 1)
+theme_override_font_sizes/font_size = 48
+text = "Average-Case"
+
+[node name="Value" type="Label" parent="MarginContainer/Rows/ComplexityBox/Average" unique_id=1962601256]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(0.99215686, 1, 0.7490196, 1)
+theme_override_font_sizes/font_size = 48
+text = "Ω(n)"
+
+[node name="Worst" type="HBoxContainer" parent="MarginContainer/Rows/ComplexityBox" unique_id=1959741200]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/ComplexityBox/Worst" unique_id=896737829]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(0.9647059, 0.4862745, 0.42352942, 1)
+theme_override_font_sizes/font_size = 48
+text = "Worst-Case"
+
+[node name="Value" type="Label" parent="MarginContainer/Rows/ComplexityBox/Worst" unique_id=715853742]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_g28q7")
+theme_override_colors/font_color = Color(1, 0.5019608, 0.43529412, 1)
+theme_override_font_sizes/font_size = 48
+text = "O(n^2)"

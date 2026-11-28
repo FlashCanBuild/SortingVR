@@ -25,7 +25,7 @@ extends Node3D
 ## increment, decrement, and definition
 @export var auto_move_loop_variables: bool = true
 ## Whether the sorting board will automatically start on game start
-@export var start_on_ready: bool = true
+@export var start_on_ready: bool = false
 ## 
 @export var compare_cooldown_sec: float = 1.0
 # [jag329] these two should be removed later
@@ -35,10 +35,15 @@ extends Node3D
 ## Time delay between steps during the debug autoplay
 @export var debug_autoplay_delay: float = 0.5
 
+##
+enum State { IDLE, RUNNING }
+##
+var ALGORITHMS: Array[GDScript] = [BubbleSort, SelectionSort, InsertionSort, GnomeSort, ShellSort]
+
 ## Size of the array to sort
 var array_size: int = 0
 ## Algorithm to use while sorting the array
-var _algorithm: SortAlgorithm = SelectionSort.new()
+var _algorithm: SortAlgorithm = ALGORITHMS[0].new()
 ## The starting state of the array that we sort.
 var _values: Array = []
 ## Mapping between a SortBlock (key) and a Slot (value). 
@@ -58,6 +63,11 @@ var _last_compare_time: float = -INF
 var _pseudocode: PseudocodePanel
 ## 
 var _stats: StatsPanel
+##
+var _state: State = State.IDLE
+##
+var _algorithm_index: int = 0
+
 
 ## Connect signals and set up the SortingBoard upon start.
 func _ready() -> void:
@@ -88,9 +98,15 @@ func _ready() -> void:
 	slider_rack.slider_released.connect(_on_slider_released)
 	_stats.randomize_requested.connect(randomize_run)
 	_stats.reset_requested.connect(reset_run)
+	_stats.start_requested.connect(_on_start_requested)
+	_stats.previous_requested.connect(_on_previous_requested)
+	_stats.next_requested.connect(_on_next_requested)
+	_stats.menu_requested.connect(_on_menu_requested)
 	# Finally, if start on ready
 	if start_on_ready:
 		randomize_run(array_size)
+	else:
+		_enter_idle()
 
 ## Reshuffle the array and start a new run.[br]
 ## @param count		Optional new count for the array
@@ -102,12 +118,16 @@ func randomize_run(count: int = -1) -> void:
 
 ## Reset the current run with the same order of starting values
 func reset_run() -> void:
+	if _state != State.RUNNING:
+		return
 	start_run(_values)
 
 ## Start a run with a certain set of starting values[br]
 ## @param values	Starting values of the array
 func start_run(values: Array) -> void:
 	_values = values.duplicate()
+	_state = State.RUNNING
+	_stats.show_running()
 	_rebuild_blocks()
 	slider_rack.setup(_algorithm.get_variables(), block_row, _values.size(), auto_move_loop_variables)
 	if _pseudocode:
@@ -165,6 +185,8 @@ func _return_block(block: SortBlock, wrong_slot: Slot, home: Slot, generation: i
 ## @param _button	the button that was pressed[br]
 ## @param answer	the type of button that is pressed (TRUE/FALSE)
 func _on_compare_pressed(_button, answer: bool) -> void:
+	if _state != State.RUNNING:
+		return
 	var now := Time.get_ticks_msec() / 1000.0
 	if now - _last_compare_time < compare_cooldown_sec:
 		return
@@ -275,3 +297,47 @@ func _on_slider_released(slider: IndexSlider, index: int) -> void:
 		slider.commit(index)
 	else:
 		slider.revert()
+		
+func _enter_idle() -> void:
+	_generation += 1
+	_state = State.IDLE
+	_origin.clear()
+	block_row.clear()
+	slider_rack.clear()
+	_stats.show_idle()
+	_preview_algorithm()
+
+func _preview_algorithm() -> void:
+	_pseudocode.set_pseudocode(_algorithm.get_pseudocode())
+	_stats.set_sort_name(_algorithm.algorithm_name())
+	_stats.set_algorithm_info(
+		_algorithm.description(),
+		_algorithm.best_case(),
+		_algorithm.average_case(),
+		_algorithm.worst_case())
+	_stats.show_stats(0, 0, 0, 0)
+
+func _select_algorithm(index: int) -> void:
+	_algorithm_index = posmod(index, ALGORITHMS.size())
+	_algorithm = ALGORITHMS[_algorithm_index].new()
+	_preview_algorithm()
+
+func _on_start_requested() -> void:
+	if _state != State.IDLE:
+		return
+	randomize_run(array_size)
+
+func _on_previous_requested() -> void:
+	if _state != State.IDLE:
+		return
+	_select_algorithm(_algorithm_index - 1)
+
+func _on_next_requested() -> void:
+	if _state != State.IDLE:
+		return
+	_select_algorithm(_algorithm_index + 1)
+
+func _on_menu_requested() -> void:
+	if _state != State.RUNNING:
+		return
+	_enter_idle()

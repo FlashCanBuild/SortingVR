@@ -34,6 +34,18 @@ func get_variables() -> Array[Variable]:
 	]
 	return variables
 
+func description() -> String:
+	return "Builds a max-heap, then repeatedly swaps the largest block to the end and repairs the heap."
+
+func best_case() -> String:
+	return "O(n log n)"
+
+func average_case() -> String:
+	return "O(n log n)"
+
+func worst_case() -> String:
+	return "O(n log n)"
+
 func build(values: Array) -> Array[Step]:
 	var a := values.duplicate()
 	var steps: Array[Step] = []

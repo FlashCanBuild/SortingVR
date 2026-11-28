@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://ckxx8x0g4dbb3" path="res://scenes/ui/FloatingPanel.tscn" id="21_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://bqxd716afxdhx" path="res://scenes/ui/SettingsPanel.tscn" id="24_2ofn6"]
 [ext_resource type="PackedScene" uid="uid://bt10yqyunasuv" path="res://scenes/ui/StatsPanel.tscn" id="26_36rkl"]
-[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="27_fs0b5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -218,6 +217,3 @@ content_scene = ExtResource("24_2ofn6")
 [node name="Stats Panel" parent="Panels" unique_id=436882954 instance=ExtResource("21_yxlcp")]
 transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, -2.5682542, 2.01, 2.2653399)
 content_scene = ExtResource("26_36rkl")
-
-[node name="Node" type="Node" parent="." unique_id=736848109]
-script = ExtResource("27_fs0b5")

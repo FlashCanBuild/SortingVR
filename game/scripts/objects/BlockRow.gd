@@ -6,6 +6,10 @@ extends Node3D
 ## Spacing between two Slots.
 const SPACING_FACTOR := 1.6
 
+## animation settings
+const RISE_DURATION := 0.45
+const RISE_STAGGER := 0.08
+
 ## Array of [Slot] scenes.
 @export var slots: Array[Slot] = []
 ## Temporary [Slot] representing the `temp` variable seen in many sorting 
@@ -34,7 +38,7 @@ func _ready() -> void:
 func setup(values: Array) -> void:
 	var count := values.size()
 	assert(count >= 1 and count <= _ordered.size(), "need 1 to %d values" % _ordered.size())
-	_clear()
+	clear()
 	var active: Array[Slot] = []
 	for i in count:
 		active.append(_ordered[i])
@@ -53,6 +57,7 @@ func setup(values: Array) -> void:
 		block.global_position = active[i].global_position
 		active[i].place(block)
 		blocks.append(block)
+		block.rise(RISE_DURATION, i * RISE_STAGGER)
 
 ## Proper getter for the slot at an index.  [br]
 ## @param slot_index 	Index of the slot	[br]
@@ -73,9 +78,10 @@ func _footprint(active: Array[Slot], unit: float) -> float:
 	return minf(unit, slot_spacing(active.size()) / SPACING_FACTOR)
 
 ## Clear all slots and free (destroy) all blocks
-func _clear() -> void:
+func clear() -> void:
 	for slot in _ordered:
 		slot.clear()
+		slot.set_active(false)
 	temp_slot.clear()
 	for block in blocks:
 		block.queue_free()

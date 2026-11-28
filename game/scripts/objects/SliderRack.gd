@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 	_draw_preview()
 
 func setup(variables: Array[Variable], block_row: BlockRow, count: int, auto_move: bool) -> void:
-	_clear()
+	clear()
 	var step := block_row.slot_spacing(count)
 	var axes := anchor.global_transform.basis.orthonormalized()
 	var first_slot := block_row.slot_for_index(0).global_position
@@ -65,7 +65,7 @@ func reset_all() -> void:
 	for slider in _sliders.values():
 		(slider as IndexSlider).show_index(Variable.UNDEFINED)
 
-func _clear() -> void:
+func clear() -> void:
 	for slider in _sliders.values():
 		slider.queue_free()
 	_sliders.clear()

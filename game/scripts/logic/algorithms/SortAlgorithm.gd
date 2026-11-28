@@ -22,3 +22,19 @@ func get_variables() -> Array[Variable]:
 func build(_values: Array) -> Array[Step]:
 	push_error("build() must be overridden")
 	return []
+
+func description() -> String:
+	push_error("description() must be overridden")
+	return ""
+
+func best_case() -> String:
+	push_error("best_case() must be overridden")
+	return ""
+
+func average_case() -> String:
+	push_error("average_case() must be overridden")
+	return ""
+
+func worst_case() -> String:
+	push_error("worst_case() must be overridden")
+	return ""

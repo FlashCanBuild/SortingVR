@@ -25,6 +25,18 @@ func get_variables() -> Array[Variable]:
 		Variable.new(&"j", false, Color.GREEN),
 	]
 	return variables
+	
+func description() -> String:
+	return "Insertion sort on far-apart blocks first, then a smaller gap each pass until the gap is 1."
+
+func best_case() -> String:
+	return "O(n log n)"
+
+func average_case() -> String:
+	return "Depends on gaps"
+
+func worst_case() -> String:
+	return "O(n^2)"
 
 func build(values: Array) -> Array[Step]:
 	var a := values.duplicate()

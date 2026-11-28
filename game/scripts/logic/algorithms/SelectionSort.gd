@@ -36,6 +36,18 @@ func get_variables() -> Array[Variable]:
 	]
 	return variables
 
+func description() -> String:
+	return "Repeatedly selects the smallest unsorted block and swaps it into place."
+
+func best_case() -> String:
+	return "O(n^2)"
+
+func average_case() -> String:
+	return "O(n^2)"
+
+func worst_case() -> String:
+	return "O(n^2)"
+
 ## Builds the array of steps needed to complete the algorithm.[br]
 ## @param values 	[Array] of integers that needs to be sorted[br]
 ## @returns 		[Array] of [Step]s to complete the algorithm
