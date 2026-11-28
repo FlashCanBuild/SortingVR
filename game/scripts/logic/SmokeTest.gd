@@ -2,12 +2,20 @@
 ## the rest of the logical classes in "scripts/logic".
 extends Node
 
+var _ALGORITHMS: Array[GDScript] = [SelectionSort, GnomeSort, ShellSort, HeapSort]
+
 var _waiting: Step
 var _done: bool = false
 
 func _ready() -> void:
-	for values in [[3, 1, 2], [1, 2, 3], [2, 2, 1], [5, 4, 3, 2, 1]]:
-		_check_trace(SelectionSort.new().build(values))
+	for algorithm in _ALGORITHMS:
+		for values in [[3, 1, 2], [1, 2, 3], [2, 2, 1], [5, 4, 3, 2, 1], [4, 1, 3, 5, 2, 8, 7, 6]]:
+			var steps: Array[Step] = algorithm.new().build(values)
+			_check_trace(steps)
+			_check_moves(steps, values)
+			print("%s | %s | %d steps ok" % [algorithm.new().algorithm_name(), values, steps.size()])
+		_play(algorithm.new(), [4, 1, 3, 5, 2], true)
+		_play(algorithm.new(), [4, 1, 3, 5, 2], false)
 	var referee := Referee.new()
 	add_child(referee)
 	referee.step_advanced.connect(_on_step_advanced)
@@ -41,6 +49,45 @@ func _correct_action(step: Step) -> PlayerAction:
 		return MoveAction.new(move_step.from_slot, move_step.to_slot)
 	var set_step := step as SetStep
 	return SetAction.new(set_step.variable, set_step.value)
+	
+func _check_moves(steps: Array[Step], values: Array) -> void:
+	var slots: Array = values.duplicate()
+	var temp = null
+	for step in steps:
+		var move_step := step as MoveStep
+		if move_step == null:
+			continue
+		var from_temp := move_step.from_slot == Step.TEMP_SLOT
+		var block = temp if from_temp else slots[move_step.from_slot]
+		assert(block != null, "moving from an empty slot on line %d" % move_step.line)
+		if from_temp:
+			temp = null
+		else:
+			slots[move_step.from_slot] = null
+		if move_step.to_slot == Step.TEMP_SLOT:
+			assert(temp == null, "temp slot already occupied on line %d" % move_step.line)
+			temp = block
+		else:
+			assert(slots[move_step.to_slot] == null, "target slot occupied on line %d" % move_step.line)
+			slots[move_step.to_slot] = block
+	assert(temp == null, "temp slot not empty at the end")
+	var expected := values.duplicate()
+	expected.sort()
+	assert(slots == expected, "trace did not sort %s" % [values])
+	
+func _play(algorithm: SortAlgorithm, values: Array, auto_move: bool) -> void:
+	_done = false
+	var referee := Referee.new()
+	add_child(referee)
+	referee.step_advanced.connect(_on_step_advanced)
+	referee.finished.connect(_on_finished)
+	referee.start(algorithm, values, auto_move)
+	var guard := 0
+	while not _done and guard < 1000:
+		referee.submit(_correct_action(_waiting))
+		guard += 1
+	assert(_done, "%s never finished" % algorithm.algorithm_name())
+	referee.queue_free()
 
 func _on_step_advanced(waiting_for: Step, narrated: Array) -> void:
 	_waiting = waiting_for

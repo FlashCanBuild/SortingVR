@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://c2kibqw1ches7" path="res://assets/models/kenney_space_station_kit_glb/table-large.glb" id="20_ebg2g"]
 [ext_resource type="PackedScene" uid="uid://ckxx8x0g4dbb3" path="res://scenes/ui/FloatingPanel.tscn" id="21_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://bqxd716afxdhx" path="res://scenes/ui/SettingsPanel.tscn" id="24_2ofn6"]
+[ext_resource type="PackedScene" uid="uid://bt10yqyunasuv" path="res://scenes/ui/StatsPanel.tscn" id="26_36rkl"]
+[ext_resource type="Script" uid="uid://o0h4xw8xpurs" path="res://scripts/logic/SmokeTest.gd" id="27_fs0b5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5t7wk"]
 
@@ -126,21 +128,18 @@ mesh = SubResource("PlaneMesh_po5s0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_po5s0")
 
-[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_panel", "slider_rack", "true_button", "false_button", "snap_preview")]
+[node name="SortingBoard" type="Node3D" parent="." unique_id=1314728863 node_paths=PackedStringArray("referee", "block_row", "pseudocode_panel", "stats_panel", "slider_rack", "true_button", "false_button", "snap_preview")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66)
 script = ExtResource("11_qmy6f")
 referee = NodePath("Referee")
 block_row = NodePath("BlockRow")
 pseudocode_panel = NodePath("../Panels/Pseudocode Panel")
+stats_panel = NodePath("../Panels/Stats Panel")
 slider_rack = NodePath("SliderRack")
 true_button = NodePath("TrueButton")
 false_button = NodePath("FalseButton")
 snap_preview = NodePath("SnapPreview")
-auto_move_loop_variables = null
-start_on_ready = null
-compare_cooldown_sec = null
 debug_autoplay_non_moves = false
-debug_autoplay_delay = null
 
 [node name="BlockRow" parent="SortingBoard" unique_id=1777947557 instance=ExtResource("13_xa025")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5359999, 0.9, 0.19999999)
@@ -206,10 +205,19 @@ transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, 0.925, 0, -3.513)
 [node name="Panels" type="Node3D" parent="." unique_id=239004174]
 
 [node name="Pseudocode Panel" parent="Panels" unique_id=1706569191 instance=ExtResource("21_yxlcp")]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.9934316, 1.5, 1.6034315)
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 1.6711421, 1.75, 1.4125128)
 content_scene = ExtResource("14_mwfav")
 width = 0.6
+handle_height = 0.04
+handle_gap = 0.01
 
 [node name="Settings Panel" parent="Panels" unique_id=828482420 instance=ExtResource("21_yxlcp")]
 transform = Transform3D(0.49999997, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.49999997, 4.267853, 1.35, -1.4778531)
 content_scene = ExtResource("24_2ofn6")
+
+[node name="Stats Panel" parent="Panels" unique_id=436882954 instance=ExtResource("21_yxlcp")]
+transform = Transform3D(-0.70710677, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.70710677, -2.5682542, 2.01, 2.2653399)
+content_scene = ExtResource("26_36rkl")
+
+[node name="Node" type="Node" parent="." unique_id=736848109]
+script = ExtResource("27_fs0b5")

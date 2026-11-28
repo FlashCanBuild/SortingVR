@@ -11,13 +11,19 @@ bg_color = Color(0.18653595, 0.27330652, 0.15036598, 1)
 default_font = ExtResource("3_lyrpg")
 default_font_size = 32
 
-[node name="StatsPanel" type="PanelContainer" unique_id=1849284944]
+[node name="StatsPanel" type="PanelContainer" unique_id=1849284944 node_paths=PackedStringArray("sort_name_label", "progress_bar", "comparisons_label", "mistakes_label", "randomize_button", "reset_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pc8i4")
+sort_name_label = NodePath("MarginContainer/Rows/SortName")
+progress_bar = NodePath("MarginContainer/Rows/ProgressBar")
+comparisons_label = NodePath("MarginContainer/Rows/ComparisonsRow/Value")
+mistakes_label = NodePath("MarginContainer/Rows/MistakesRow/Value")
+randomize_button = NodePath("MarginContainer/Rows/ButtonRow/Randomize")
+reset_button = NodePath("MarginContainer/Rows/ButtonRow/Reset")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=663432883]
 layout_mode = 2
